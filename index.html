@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +29,6 @@
       --white: #fbf7ff;
       --muted: #b9a9c5;
       --border: rgba(217, 179, 255, 0.16);
-      --success: #b7f7c6;
       --max-width: 1240px;
       --radius: 18px;
       --transition: 220ms ease;
@@ -69,13 +69,11 @@
       text-decoration: none;
     }
 
-    button,
-    input {
+    button, input {
       font: inherit;
     }
 
-    button,
-    a {
+    button, a {
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -144,7 +142,7 @@
       color: var(--purple);
     }
 
-    /* Announcement */
+    /* Announcement bar */
 
     .announcement {
       position: relative;
@@ -159,14 +157,14 @@
       text-transform: uppercase;
     }
 
-    /* Header */
+    /* Header and navigation */
 
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
       border-bottom: 1px solid var(--border);
-      background: rgba(16, 9, 22, 0.91);
+      background: rgba(16, 9, 22, 0.94);
       backdrop-filter: blur(18px);
     }
 
@@ -175,7 +173,7 @@
       min-height: 78px;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
+      gap: 22px;
     }
 
     .logo {
@@ -225,7 +223,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 29px;
+      gap: 24px;
     }
 
     .nav-links a {
@@ -239,7 +237,6 @@
       color: var(--purple-light);
     }
 
-    .nav-cta,
     .button {
       display: inline-flex;
       min-height: 46px;
@@ -263,7 +260,6 @@
         box-shadow var(--transition);
     }
 
-    .nav-cta:hover,
     .button:hover {
       transform: translateY(-3px);
       background: var(--purple-light);
@@ -282,10 +278,50 @@
       color: var(--purple-light);
     }
 
+    /* Language selector */
+
+    .language-switch {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--surface);
+    }
+
+    .lang-btn {
+      min-width: 25px;
+      padding: 5px 2px;
+      border: 0;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 900;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .lang-btn:hover {
+      color: var(--purple-light);
+    }
+
+    .lang-btn.active {
+      background: rgba(189, 120, 255, 0.17);
+      color: var(--purple-light);
+    }
+
+    .language-divider {
+      color: #6f5b7c;
+      font-size: 11px;
+    }
+
     .menu-toggle {
       display: none;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       align-items: center;
       justify-content: center;
       border: 1px solid var(--border);
@@ -293,7 +329,7 @@
       background: var(--surface);
       color: var(--white);
       cursor: pointer;
-      font-size: 23px;
+      font-size: 22px;
     }
 
     /* Hero */
@@ -322,7 +358,6 @@
         url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=2000&q=85")
         center 38% / cover;
       content: "";
-      transform: scale(1.02);
     }
 
     .hero::after {
@@ -567,7 +602,7 @@
       gap: 16px;
     }
 
-    /* Collection */
+    /* Collection and products */
 
     .collection {
       position: relative;
@@ -754,7 +789,7 @@
     .story-stamp strong {
       display: block;
       font-family: "Barlow Condensed", sans-serif;
-      font-size: 37px;
+      font-size: 34px;
       font-weight: 900;
       line-height: 0.9;
       text-transform: uppercase;
@@ -806,7 +841,7 @@
       font-size: 11px;
     }
 
-    /* Newsletter */
+    /* Contact section */
 
     .newsletter {
       padding: 0 0 100px;
@@ -932,7 +967,7 @@
       color: var(--purple-light);
     }
 
-    /* WhatsApp floating button */
+    /* Floating WhatsApp button */
 
     .whatsapp-float {
       position: fixed;
@@ -977,19 +1012,24 @@
       transform: translateY(0);
     }
 
-    /* Responsive */
+    /* Responsive design */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
+      .nav {
+        gap: 12px;
+      }
+
       .nav-links {
-        gap: 17px;
+        gap: 14px;
       }
 
       .nav-links a {
         font-size: 10px;
       }
 
-      .nav-cta {
-        padding: 0 14px;
+      .nav > .button {
+        padding-inline: 12px;
+        font-size: 9px;
       }
 
       .product-grid {
@@ -1026,14 +1066,38 @@
 
       .nav {
         min-height: 68px;
+        gap: 8px;
+      }
+
+      .logo {
+        gap: 7px;
+      }
+
+      .logo-name {
+        font-size: 23px;
+      }
+
+      .logo-tagline {
+        font-size: 7px;
+        letter-spacing: 1.2px;
+      }
+
+      .logo-mark {
+        width: 36px;
+        height: 36px;
       }
 
       .menu-toggle {
         display: inline-flex;
+        flex-shrink: 0;
       }
 
-      .nav-cta {
+      .nav > .button {
         display: none;
+      }
+
+      .language-switch {
+        margin-left: auto;
       }
 
       .nav-links {
@@ -1121,6 +1185,10 @@
         margin-bottom: 24px;
       }
 
+      .collection-top > .button {
+        margin-bottom: 25px;
+      }
+
       .product-grid {
         gap: 12px;
       }
@@ -1161,7 +1229,7 @@
       }
 
       .story-stamp strong {
-        font-size: 30px;
+        font-size: 28px;
       }
 
       .newsletter {
@@ -1208,12 +1276,20 @@
 
     @media (max-width: 390px) {
       .logo-name {
-        font-size: 23px;
+        font-size: 21px;
       }
 
-      .logo-mark {
-        width: 36px;
-        height: 36px;
+      .logo-tagline {
+        letter-spacing: 0.8px;
+      }
+
+      .language-switch {
+        gap: 3px;
+        padding: 4px;
+      }
+
+      .lang-btn {
+        min-width: 23px;
       }
 
       .product-grid {
@@ -1252,8 +1328,8 @@
 </head>
 
 <body>
-  <!-- Announcement bar -->
-  <div class="announcement">
+  <!-- Announcement -->
+  <div class="announcement" data-i18n="announcement">
     Streetwear with attitude — Find your style. Own your energy.
   </div>
 
@@ -1264,19 +1340,25 @@
         <span class="logo-mark">SS</span>
         <span>
           <span class="logo-name">SAUCE<span>STREET</span>®</span>
-          <span class="logo-tagline">Streetwear & Football Culture</span>
+          <span class="logo-tagline" data-i18n="brandTagline">Streetwear & Football Culture</span>
         </span>
       </a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#inicio">Home</a>
-        <a href="#categorias">Categories</a>
-        <a href="#productos">Collection</a>
-        <a href="#nosotros">Our Story</a>
-        <a href="#contacto">Contact</a>
+        <a href="#inicio" data-i18n="home">Home</a>
+        <a href="#categorias" data-i18n="categories">Categories</a>
+        <a href="#productos" data-i18n="collection">Collection</a>
+        <a href="#nosotros" data-i18n="ourStory">Our Story</a>
+        <a href="#contacto" data-i18n="contact">Contact</a>
       </nav>
 
-      <a class="nav-cta" href="#productos">Shop the Drop ↗</a>
+      <div class="language-switch" role="group" aria-label="Choose language">
+        <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true" aria-label="English">EN</button>
+        <span class="language-divider">|</span>
+        <button type="button" class="lang-btn" data-lang="es" aria-pressed="false" aria-label="Español">ES</button>
+      </div>
+
+      <a class="button" href="#productos" data-i18n="shopDrop">Shop the Drop ↗</a>
 
       <button
         class="menu-toggle"
@@ -1285,9 +1367,7 @@
         aria-label="Open navigation menu"
         aria-controls="navLinks"
         aria-expanded="false"
-      >
-        ☰
-      </button>
+      >☰</button>
     </div>
   </header>
 
@@ -1298,57 +1378,57 @@
         <div class="hero-content">
           <div class="hero-label">
             <span></span>
-            Independent Streetwear
+            <span data-i18n="heroLabel">Independent Streetwear</span>
           </div>
 
           <h1>
-            Wear Your
-            <span class="line-purple">Attitude.</span>
+            <span data-i18n="heroLine1">Wear Your</span>
+            <span class="line-purple" data-i18n="heroLine2">Attitude.</span>
           </h1>
 
-          <p class="hero-copy">
+          <p class="hero-copy" data-i18n="heroDescription">
             More than clothes. It's a statement. Discover streetwear,
             oversized essentials and football-inspired pieces made for
             those who create their own rules.
           </p>
 
           <div class="hero-actions">
-            <a class="button" href="#productos">Explore Collection ↗</a>
-            <a class="button button-outline" href="#categorias">Discover Your Style</a>
+            <a class="button" href="#productos" data-i18n="exploreCollection">Explore Collection ↗</a>
+            <a class="button button-outline" href="#categorias" data-i18n="discoverStyle">Discover Your Style</a>
           </div>
 
           <div class="hero-meta">
-            <span>Streetwear Essentials</span>
-            <span>Football Culture</span>
-            <span>Made for Your Style</span>
+            <span data-i18n="metaStreetwear">Streetwear Essentials</span>
+            <span data-i18n="metaFootball">Football Culture</span>
+            <span data-i18n="metaStyle">Made for Your Style</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Moving text -->
+    <!-- Moving ticker -->
     <div class="ticker" aria-label="SauceStreet brand message">
       <div class="ticker-track">
         <div class="ticker-group" aria-hidden="true">
-          <span class="ticker-item">No Rules</span>
+          <span class="ticker-item" data-i18n="ticker1">No Rules</span>
           <span class="ticker-star">✳</span>
-          <span class="ticker-item">Just Style</span>
+          <span class="ticker-item" data-i18n="ticker2">Just Style</span>
           <span class="ticker-star">✳</span>
-          <span class="ticker-item">Street Culture</span>
+          <span class="ticker-item" data-i18n="ticker3">Street Culture</span>
           <span class="ticker-star">✳</span>
-          <span class="ticker-item">Own Your Energy</span>
+          <span class="ticker-item" data-i18n="ticker4">Own Your Energy</span>
           <span class="ticker-star">✳</span>
           <span class="ticker-item">SauceStreet®</span>
           <span class="ticker-star">✳</span>
         </div>
         <div class="ticker-group" aria-hidden="true">
-          <span class="ticker-item">No Rules</span>
+          <span class="ticker-item" data-i18n="ticker1">No Rules</span>
           <span class="ticker-star">✳</span>
-          <span class="ticker-item">Just Style</span>
+          <span class="ticker-item" data-i18n="ticker2">Just Style</span>
           <span class="ticker-star">✳</span>
-          <span class="ticker-item">Street Culture</span>
+          <span class="ticker-item" data-i18n="ticker3">Street Culture</span>
           <span class="ticker-star">✳</span>
-          <span class="ticker-item">Own Your Energy</span>
+          <span class="ticker-item" data-i18n="ticker4">Own Your Energy</span>
           <span class="ticker-star">✳</span>
           <span class="ticker-item">SauceStreet®</span>
           <span class="ticker-star">✳</span>
@@ -1360,9 +1440,9 @@
     <section class="section" id="categorias">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="eyebrow">Find Your Fit</span>
-          <h2>Built Around <span class="accent">Your Style.</span></h2>
-          <p>
+          <span class="eyebrow" data-i18n="categoryEyebrow">Find Your Fit</span>
+          <h2 data-i18n="categoryHeading">Built Around <span class="accent">Your Style.</span></h2>
+          <p data-i18n="categoryDescription">
             From everyday essentials to football-inspired looks,
             find the pieces that speak your language.
           </p>
@@ -1371,28 +1451,28 @@
         <div class="categories-grid">
           <a class="category-card category-tees reveal" href="#productos">
             <div class="category-content">
-              <span class="category-number">01 / EVERYDAY ESSENTIALS</span>
-              <h3>Oversized Tees</h3>
-              <p>Relaxed fit. Maximum attitude.</p>
-              <span class="text-link">Explore Tees ↗</span>
+              <span class="category-number" data-i18n="catNumber1">01 / EVERYDAY ESSENTIALS</span>
+              <h3 data-i18n="teeTitle">Oversized Tees</h3>
+              <p data-i18n="teeDescription">Relaxed fit. Maximum attitude.</p>
+              <span class="text-link" data-i18n="teeLink">Explore Tees ↗</span>
             </div>
           </a>
 
           <a class="category-card category-caps reveal" href="#productos">
             <div class="category-content">
-              <span class="category-number">02 / FINISH THE LOOK</span>
-              <h3>Caps & Accessories</h3>
-              <p>The details make the difference.</p>
-              <span class="text-link">Explore Accessories ↗</span>
+              <span class="category-number" data-i18n="catNumber2">02 / FINISH THE LOOK</span>
+              <h3 data-i18n="capTitle">Caps & Accessories</h3>
+              <p data-i18n="capDescription">The details make the difference.</p>
+              <span class="text-link" data-i18n="capLink">Explore Accessories ↗</span>
             </div>
           </a>
 
           <a class="category-card category-football reveal" href="#productos">
             <div class="category-content">
-              <span class="category-number">03 / FOOTBALL CULTURE</span>
-              <h3>Jerseys</h3>
-              <p>For the love of the game.</p>
-              <span class="text-link">Explore Jerseys ↗</span>
+              <span class="category-number" data-i18n="catNumber3">03 / FOOTBALL CULTURE</span>
+              <h3 data-i18n="jerseyTitle">Jerseys</h3>
+              <p data-i18n="jerseyDescription">For the love of the game.</p>
+              <span class="text-link" data-i18n="jerseyLink">Explore Jerseys ↗</span>
             </div>
           </a>
         </div>
@@ -1404,124 +1484,100 @@
       <div class="container">
         <div class="collection-top">
           <div class="section-heading reveal">
-            <span class="eyebrow">The SauceStreet Edit</span>
-            <h2>Featured <span class="accent">Pieces.</span></h2>
-            <p>
+            <span class="eyebrow" data-i18n="collectionEyebrow">The SauceStreet Edit</span>
+            <h2 data-i18n="featuredHeading">Featured <span class="accent">Pieces.</span></h2>
+            <p data-i18n="featuredDescription">
               Your next go-to pieces start here. Choose your favorite
               and contact us to ask about availability.
             </p>
           </div>
 
-          <a class="button button-outline" href="#contacto">Ask About Products ↗</a>
+          <a class="button button-outline" href="#contacto" data-i18n="askProducts">Ask About Products ↗</a>
         </div>
 
         <div class="product-grid">
-          <!-- Product 1 -->
           <article class="product-card reveal">
             <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"
                 alt="Minimal oversized style T-shirt"
+                data-i18n-alt="altTee"
                 loading="lazy"
               >
-              <span class="product-tag">Essential</span>
+              <span class="product-tag" data-i18n="tagEssential">Essential</span>
             </div>
             <div class="product-info">
-              <span class="product-category">Streetwear / Tops</span>
-              <h3>Oversized Essential Tee</h3>
+              <span class="product-category" data-i18n="teeCategory">Streetwear / Tops</span>
+              <h3 data-i18n="teeProduct">Oversized Essential Tee</h3>
               <div class="product-bottom">
                 <span class="product-price">12 USDT</span>
-                <button
-                  class="product-button"
-                  type="button"
-                  data-product="Oversized Essential Tee"
-                >
-                  Inquire ↗
-                </button>
+                <button class="product-button" type="button" data-product="tee" data-i18n="inquire">Inquire ↗</button>
               </div>
             </div>
           </article>
 
-          <!-- Product 2 -->
           <article class="product-card reveal">
             <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85"
                 alt="Streetwear baseball cap"
+                data-i18n-alt="altCap"
                 loading="lazy"
               >
-              <span class="product-tag">Everyday</span>
+              <span class="product-tag" data-i18n="tagEveryday">Everyday</span>
             </div>
             <div class="product-info">
-              <span class="product-category">Accessories / Caps</span>
-              <h3>Urban Classic Cap</h3>
+              <span class="product-category" data-i18n="capCategory">Accessories / Caps</span>
+              <h3 data-i18n="capProduct">Urban Classic Cap</h3>
               <div class="product-bottom">
                 <span class="product-price">9 USDT</span>
-                <button
-                  class="product-button"
-                  type="button"
-                  data-product="Urban Classic Cap"
-                >
-                  Inquire ↗
-                </button>
+                <button class="product-button" type="button" data-product="cap" data-i18n="inquire">Inquire ↗</button>
               </div>
             </div>
           </article>
 
-          <!-- Product 3 -->
           <article class="product-card reveal">
             <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=85"
                 alt="Football-inspired sportswear"
+                data-i18n-alt="altJersey"
                 loading="lazy"
               >
-              <span class="product-tag">Football</span>
+              <span class="product-tag" data-i18n="tagFootball">Football</span>
             </div>
             <div class="product-info">
-              <span class="product-category">Football / Jerseys</span>
-              <h3>Football Culture Jersey</h3>
+              <span class="product-category" data-i18n="jerseyCategory">Football / Jerseys</span>
+              <h3 data-i18n="jerseyProduct">Football Culture Jersey</h3>
               <div class="product-bottom">
                 <span class="product-price">18 USDT</span>
-                <button
-                  class="product-button"
-                  type="button"
-                  data-product="Football Culture Jersey"
-                >
-                  Inquire ↗
-                </button>
+                <button class="product-button" type="button" data-product="jersey" data-i18n="inquire">Inquire ↗</button>
               </div>
             </div>
           </article>
 
-          <!-- Product 4 -->
           <article class="product-card reveal">
             <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=800&q=85"
                 alt="Urban streetwear outfit"
+                data-i18n-alt="altCollection"
                 loading="lazy"
               >
-              <span class="product-tag">Street Edit</span>
+              <span class="product-tag" data-i18n="tagStreetEdit">Street Edit</span>
             </div>
             <div class="product-info">
-              <span class="product-category">Streetwear / Collection</span>
-              <h3>Streetwear Collection</h3>
+              <span class="product-category" data-i18n="collectionCategory">Streetwear / Collection</span>
+              <h3 data-i18n="collectionProduct">Streetwear Collection</h3>
               <div class="product-bottom">
                 <span class="product-price">15 USDT</span>
-                <button
-                  class="product-button"
-                  type="button"
-                  data-product="Streetwear Collection"
-                >
-                  Inquire ↗
-                </button>
+                <button class="product-button" type="button" data-product="collection" data-i18n="inquire">Inquire ↗</button>
               </div>
             </div>
           </article>
         </div>
 
-        <p class="collection-note">
+        <p class="collection-note" data-i18n="productNote">
           Product images are illustrative. Prices are sample prices and must be confirmed before publishing.
         </p>
       </div>
@@ -1535,12 +1591,14 @@
             <img
               src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
               alt="Streetwear-inspired fashion editorial"
+              data-i18n-alt="altStory"
               loading="lazy"
             >
           </div>
-          <div class="story-stamp" aria-label="Style without limits">
+
+          <div class="story-stamp" aria-label="Own your style">
             <div>
-              <strong>Own<br>Your<br>Style.</strong>
+              <strong data-i18n="stampText">Own<br>Your<br>Style.</strong>
               <span>SauceStreet®</span>
             </div>
           </div>
@@ -1548,16 +1606,16 @@
 
         <div class="story-copy reveal">
           <div class="section-heading">
-            <span class="eyebrow">Our Identity</span>
-            <h2>Not Made to <span class="accent">Blend In.</span></h2>
+            <span class="eyebrow" data-i18n="storyEyebrow">Our Identity</span>
+            <h2 data-i18n="storyHeading">Not Made to <span class="accent">Blend In.</span></h2>
           </div>
 
-          <p>
+          <p data-i18n="storyParagraph1">
             SauceStreet is about self-expression, street culture and
             the confidence to wear what feels like you.
           </p>
 
-          <p>
+          <p data-i18n="storyParagraph2">
             Inspired by urban fashion and football culture, our style
             brings together bold energy, everyday comfort and pieces
             that help you create your own look.
@@ -1565,36 +1623,36 @@
 
           <div class="story-points">
             <div class="story-point">
-              <strong>Street First</strong>
-              <span>Inspired by urban culture.</span>
+              <strong data-i18n="point1Title">Street First</strong>
+              <span data-i18n="point1Text">Inspired by urban culture.</span>
             </div>
             <div class="story-point">
-              <strong>Your Rules</strong>
-              <span>Style is personal. Own it.</span>
+              <strong data-i18n="point2Title">Your Rules</strong>
+              <span data-i18n="point2Text">Style is personal. Own it.</span>
             </div>
             <div class="story-point">
-              <strong>Everyday Fit</strong>
-              <span>Looks for your daily rotation.</span>
+              <strong data-i18n="point3Title">Everyday Fit</strong>
+              <span data-i18n="point3Text">Looks for your daily rotation.</span>
             </div>
             <div class="story-point">
-              <strong>Football DNA</strong>
-              <span>Made for the culture around the game.</span>
+              <strong data-i18n="point4Title">Football DNA</strong>
+              <span data-i18n="point4Text">Made for the culture around the game.</span>
             </div>
           </div>
 
-          <a class="button" href="#productos">Find Your Look ↗</a>
+          <a class="button" href="#productos" data-i18n="findYourLook">Find Your Look ↗</a>
         </div>
       </div>
     </section>
 
-    <!-- Newsletter / contact -->
+    <!-- Contact -->
     <section class="newsletter" id="contacto">
       <div class="container">
         <div class="newsletter-box reveal">
           <div class="newsletter-copy">
-            <span class="eyebrow">Stay Connected</span>
-            <h2>Get in the <span class="accent">Loop.</span></h2>
-            <p>
+            <span class="eyebrow" data-i18n="contactEyebrow">Stay Connected</span>
+            <h2 data-i18n="contactHeading">Get in the <span class="accent">Loop.</span></h2>
+            <p data-i18n="contactDescription">
               Want to know about products, sizes or availability?
               Contact us directly and let's find your next favorite piece.
             </p>
@@ -1607,13 +1665,16 @@
                 id="emailInput"
                 name="email"
                 placeholder="Your email address"
+                data-i18n-placeholder="emailPlaceholder"
                 aria-label="Your email address"
+                data-i18n-aria="emailPlaceholder"
                 autocomplete="email"
                 required
               >
-              <button class="button" type="submit">Contact Us ↗</button>
+              <button class="button" type="submit" data-i18n="contactUs">Contact Us ↗</button>
             </form>
-            <p class="newsletter-message" id="newsletterMessage" role="status">
+
+            <p class="newsletter-message" id="newsletterMessage" role="status" data-i18n="formNotice">
               This form opens WhatsApp with your message; it does not subscribe you to an email list.
             </p>
           </div>
@@ -1627,46 +1688,46 @@
     <div class="container">
       <div class="footer-main">
         <div class="footer-brand">
-          <a class="logo" href="#inicio">
+          <a class="logo" href="#inicio" aria-label="SauceStreet home">
             <span class="logo-mark">SS</span>
             <span>
               <span class="logo-name">SAUCE<span>STREET</span>®</span>
-              <span class="logo-tagline">Streetwear & Football Culture</span>
+              <span class="logo-tagline" data-i18n="brandTagline">Streetwear & Football Culture</span>
             </span>
           </a>
 
-          <p>
+          <p data-i18n="footerDescription">
             Streetwear with attitude. Built around self-expression,
             urban culture and the freedom to create your own style.
           </p>
         </div>
 
         <div class="footer-column">
-          <h3>Explore</h3>
-          <a href="#inicio">Home</a>
-          <a href="#categorias">Categories</a>
-          <a href="#productos">Collection</a>
-          <a href="#nosotros">Our Story</a>
+          <h3 data-i18n="footerExplore">Explore</h3>
+          <a href="#inicio" data-i18n="home">Home</a>
+          <a href="#categorias" data-i18n="categories">Categories</a>
+          <a href="#productos" data-i18n="collection">Collection</a>
+          <a href="#nosotros" data-i18n="ourStory">Our Story</a>
         </div>
 
         <div class="footer-column">
-          <h3>Collections</h3>
-          <a href="#productos">Oversized Tees</a>
-          <a href="#productos">Caps & Accessories</a>
-          <a href="#productos">Football Jerseys</a>
+          <h3 data-i18n="footerCollections">Collections</h3>
+          <a href="#productos" data-i18n="teeTitle">Oversized Tees</a>
+          <a href="#productos" data-i18n="capTitle">Caps & Accessories</a>
+          <a href="#productos" data-i18n="jerseyTitle">Jerseys</a>
         </div>
 
         <div class="footer-column">
-          <h3>Connect</h3>
-          <a href="#" id="footerWhatsapp">WhatsApp</a>
-          <a href="#" id="footerInstagram" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="#contacto">Contact Us</a>
+          <h3 data-i18n="footerConnect">Connect</h3>
+          <a href="#contacto" id="footerWhatsapp" data-i18n="footerWhatsapp">WhatsApp</a>
+          <a href="https://www.instagram.com/" id="footerInstagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="#contacto" data-i18n="footerContact">Contact Us</a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© <span id="year"></span> <strong>SauceStreet®</strong>. All rights reserved.</span>
-        <span>Streetwear & Football Culture.</span>
+        <span>© <span id="year"></span> <strong>SauceStreet®</strong>. <span data-i18n="copyright">All rights reserved.</span></span>
+        <span data-i18n="footerTagline">Streetwear & Football Culture.</span>
       </div>
     </div>
   </footer>
@@ -1677,23 +1738,23 @@
     href="#contacto"
     id="floatingWhatsapp"
     aria-label="Contact SauceStreet on WhatsApp"
+    data-i18n-aria="whatsappAria"
   >
     <span class="whatsapp-icon" aria-hidden="true">↗</span>
-    <span>Let's Talk</span>
+    <span data-i18n="letsTalk">Let's Talk</span>
   </a>
 
   <script>
     /*
       SAUCESTREET CONFIGURATION
 
-      1. Replace whatsappNumber with your full country code + number.
-         Use digits only, without +, spaces or dashes.
-         Example format for Costa Rica: 506XXXXXXXX
+      1. Replace TU_NUMERO_DE_WHATSAPP with your WhatsApp number.
+         Include the country code; use digits only.
+         Costa Rica example format: 506XXXXXXXX
 
       2. Replace instagramUrl with your real Instagram profile.
 
-      3. Update product names, prices, descriptions and photos
-         before making the store public.
+      3. Update sample prices and product images before publishing.
     */
 
     const CONFIG = {
@@ -1701,9 +1762,310 @@
       instagramUrl: "https://www.instagram.com/"
     };
 
+    const translations = {
+      en: {
+        announcement: "Streetwear with attitude — Find your style. Own your energy.",
+        brandTagline: "Streetwear & Football Culture",
+        home: "Home",
+        categories: "Categories",
+        collection: "Collection",
+        ourStory: "Our Story",
+        contact: "Contact",
+        shopDrop: "Shop the Drop ↗",
+        heroLabel: "Independent Streetwear",
+        heroLine1: "Wear Your",
+        heroLine2: "Attitude.",
+        heroDescription: "More than clothes. It's a statement. Discover streetwear, oversized essentials and football-inspired pieces made for those who create their own rules.",
+        exploreCollection: "Explore Collection ↗",
+        discoverStyle: "Discover Your Style",
+        metaStreetwear: "Streetwear Essentials",
+        metaFootball: "Football Culture",
+        metaStyle: "Made for Your Style",
+        ticker1: "No Rules",
+        ticker2: "Just Style",
+        ticker3: "Street Culture",
+        ticker4: "Own Your Energy",
+        categoryEyebrow: "Find Your Fit",
+        categoryHeading: 'Built Around <span class="accent">Your Style.</span>',
+        categoryDescription: "From everyday essentials to football-inspired looks, find the pieces that speak your language.",
+        catNumber1: "01 / EVERYDAY ESSENTIALS",
+        catNumber2: "02 / FINISH THE LOOK",
+        catNumber3: "03 / FOOTBALL CULTURE",
+        teeTitle: "Oversized Tees",
+        teeDescription: "Relaxed fit. Maximum attitude.",
+        teeLink: "Explore Tees ↗",
+        capTitle: "Caps & Accessories",
+        capDescription: "The details make the difference.",
+        capLink: "Explore Accessories ↗",
+        jerseyTitle: "Jerseys",
+        jerseyDescription: "For the love of the game.",
+        jerseyLink: "Explore Jerseys ↗",
+        collectionEyebrow: "The SauceStreet Edit",
+        featuredHeading: 'Featured <span class="accent">Pieces.</span>',
+        featuredDescription: "Your next go-to pieces start here. Choose your favorite and contact us to ask about availability.",
+        askProducts: "Ask About Products ↗",
+        tagEssential: "Essential",
+        tagEveryday: "Everyday",
+        tagFootball: "Football",
+        tagStreetEdit: "Street Edit",
+        teeCategory: "Streetwear / Tops",
+        capCategory: "Accessories / Caps",
+        jerseyCategory: "Football / Jerseys",
+        collectionCategory: "Streetwear / Collection",
+        teeProduct: "Oversized Essential Tee",
+        capProduct: "Urban Classic Cap",
+        jerseyProduct: "Football Culture Jersey",
+        collectionProduct: "Streetwear Collection",
+        inquire: "Inquire ↗",
+        productNote: "Product images are illustrative. Prices are sample prices and must be confirmed before publishing.",
+        altTee: "Minimal oversized style T-shirt",
+        altCap: "Streetwear baseball cap",
+        altJersey: "Football-inspired sportswear",
+        altCollection: "Urban streetwear outfit",
+        altStory: "Streetwear-inspired fashion editorial",
+        stampText: "Own<br>Your<br>Style.",
+        storyEyebrow: "Our Identity",
+        storyHeading: 'Not Made to <span class="accent">Blend In.</span>',
+        storyParagraph1: "SauceStreet is about self-expression, street culture and the confidence to wear what feels like you.",
+        storyParagraph2: "Inspired by urban fashion and football culture, our style brings together bold energy, everyday comfort and pieces that help you create your own look.",
+        point1Title: "Street First",
+        point1Text: "Inspired by urban culture.",
+        point2Title: "Your Rules",
+        point2Text: "Style is personal. Own it.",
+        point3Title: "Everyday Fit",
+        point3Text: "Looks for your daily rotation.",
+        point4Title: "Football DNA",
+        point4Text: "Made for the culture around the game.",
+        findYourLook: "Find Your Look ↗",
+        contactEyebrow: "Stay Connected",
+        contactHeading: 'Get in the <span class="accent">Loop.</span>',
+        contactDescription: "Want to know about products, sizes or availability? Contact us directly and let's find your next favorite piece.",
+        emailPlaceholder: "Your email address",
+        contactUs: "Contact Us ↗",
+        formNotice: "This form opens WhatsApp with your message; it does not subscribe you to an email list.",
+        footerDescription: "Streetwear with attitude. Built around self-expression, urban culture and the freedom to create your own style.",
+        footerExplore: "Explore",
+        footerCollections: "Collections",
+        footerConnect: "Connect",
+        footerContact: "Contact Us",
+        footerWhatsapp: "WhatsApp",
+        footerTagline: "Streetwear & Football Culture.",
+        copyright: "All rights reserved.",
+        letsTalk: "Let's Talk",
+        whatsappAria: "Contact SauceStreet on WhatsApp",
+        whatsappNotConfigured: "WhatsApp is not configured yet. Edit the HTML and replace TU_NUMERO_DE_WHATSAPP with your number, including the country code.",
+        whatsappProductMessage: "Hello SauceStreet! I'm interested in the {product}. Could you please share details about availability, sizes and payment options?",
+        whatsappGeneralMessage: "Hello SauceStreet! I'd like to know more about your collection.",
+        whatsappEmailMessage: "Hello SauceStreet! I'd like to receive information about your products. My email is: {email}"
+      },
+
+      es: {
+        announcement: "Moda urbana con actitud — Encuentra tu estilo. Vive tu energía.",
+        brandTagline: "Moda urbana y cultura del fútbol",
+        home: "Inicio",
+        categories: "Categorías",
+        collection: "Colección",
+        ourStory: "Nuestra historia",
+        contact: "Contacto",
+        shopDrop: "Ver colección ↗",
+        heroLabel: "Moda urbana independiente",
+        heroLine1: "Viste tu",
+        heroLine2: "Actitud.",
+        heroDescription: "Mucho más que ropa. Es una declaración de estilo. Descubre moda urbana, básicos oversized y prendas inspiradas en la cultura del fútbol para quienes crean sus propias reglas.",
+        exploreCollection: "Explorar colección ↗",
+        discoverStyle: "Encuentra tu estilo",
+        metaStreetwear: "Básicos urbanos",
+        metaFootball: "Cultura del fútbol",
+        metaStyle: "Hecho para tu estilo",
+        ticker1: "Sin reglas",
+        ticker2: "Puro estilo",
+        ticker3: "Cultura urbana",
+        ticker4: "Vive tu energía",
+        categoryEyebrow: "Encuentra tu estilo",
+        categoryHeading: 'Diseñado para <span class="accent">tu estilo.</span>',
+        categoryDescription: "Desde básicos para todos los días hasta looks inspirados en el fútbol, encuentra prendas que hablan tu mismo idioma.",
+        catNumber1: "01 / BÁSICOS DE TODOS LOS DÍAS",
+        catNumber2: "02 / COMPLETA TU LOOK",
+        catNumber3: "03 / CULTURA DEL FÚTBOL",
+        teeTitle: "Camisetas Oversized",
+        teeDescription: "Corte relajado. Máxima actitud.",
+        teeLink: "Ver camisetas ↗",
+        capTitle: "Gorras y accesorios",
+        capDescription: "Los detalles hacen la diferencia.",
+        capLink: "Ver accesorios ↗",
+        jerseyTitle: "Jerseys",
+        jerseyDescription: "Por amor al fútbol.",
+        jerseyLink: "Ver jerseys ↗",
+        collectionEyebrow: "Selección SauceStreet",
+        featuredHeading: 'Prendas <span class="accent">destacadas.</span>',
+        featuredDescription: "Tu próxima prenda favorita empieza aquí. Elige la que más te guste y contáctanos para consultar disponibilidad.",
+        askProducts: "Consultar productos ↗",
+        tagEssential: "Esencial",
+        tagEveryday: "Para todos los días",
+        tagFootball: "Fútbol",
+        tagStreetEdit: "Estilo urbano",
+        teeCategory: "Moda urbana / Camisetas",
+        capCategory: "Accesorios / Gorras",
+        jerseyCategory: "Fútbol / Jerseys",
+        collectionCategory: "Moda urbana / Colección",
+        teeProduct: "Camiseta Oversized Essential",
+        capProduct: "Gorra Urban Classic",
+        jerseyProduct: "Jersey Football Culture",
+        collectionProduct: "Colección Streetwear",
+        inquire: "Consultar ↗",
+        productNote: "Las imágenes son ilustrativas. Los precios son ejemplos y deben confirmarse antes de publicar.",
+        altTee: "Camiseta de estilo oversized minimalista",
+        altCap: "Gorra de estilo urbano",
+        altJersey: "Ropa deportiva inspirada en el fútbol",
+        altCollection: "Conjunto de moda urbana",
+        altStory: "Editorial de moda inspirada en el streetwear",
+        stampText: "Crea<br>tu<br>estilo.",
+        storyEyebrow: "Nuestra identidad",
+        storyHeading: 'No nacimos para <span class="accent">pasar desapercibidos.</span>',
+        storyParagraph1: "SauceStreet representa la expresión personal, la cultura urbana y la confianza de vestir aquello que te identifica.",
+        storyParagraph2: "Inspirados en la moda urbana y la cultura del fútbol, combinamos energía, comodidad y prendas que te ayudan a crear tu propio estilo.",
+        point1Title: "Esencia urbana",
+        point1Text: "Inspirados en la cultura de la calle.",
+        point2Title: "Tus reglas",
+        point2Text: "Tu estilo es personal. Hazlo tuyo.",
+        point3Title: "Para cada día",
+        point3Text: "Looks para tu rutina diaria.",
+        point4Title: "ADN futbolero",
+        point4Text: "Inspirados en la cultura del fútbol.",
+        findYourLook: "Encuentra tu look ↗",
+        contactEyebrow: "Sigamos conectados",
+        contactHeading: 'Forma parte de <span class="accent">la cultura.</span>',
+        contactDescription: "¿Quieres conocer nuestros productos, tallas o disponibilidad? Escríbenos directamente y encuentra tu próxima prenda favorita.",
+        emailPlaceholder: "Tu correo electrónico",
+        contactUs: "Contáctanos ↗",
+        formNotice: "Este formulario abre WhatsApp con tu mensaje; no te suscribe a una lista de correos.",
+        footerDescription: "Moda urbana con actitud. Una marca inspirada en la expresión personal, la cultura urbana y la libertad de crear tu propio estilo.",
+        footerExplore: "Explorar",
+        footerCollections: "Colecciones",
+        footerConnect: "Conéctate",
+        footerContact: "Contáctanos",
+        footerWhatsapp: "WhatsApp",
+        footerTagline: "Moda urbana y cultura del fútbol.",
+        copyright: "Todos los derechos reservados.",
+        letsTalk: "Hablemos",
+        whatsappAria: "Contacta a SauceStreet por WhatsApp",
+        whatsappNotConfigured: "WhatsApp todavía no está configurado. Edita el HTML y reemplaza TU_NUMERO_DE_WHATSAPP por tu número con el código de país.",
+        whatsappProductMessage: "¡Hola, SauceStreet! Me interesa el producto {product}. ¿Podrían compartir información sobre disponibilidad, tallas y métodos de pago?",
+        whatsappGeneralMessage: "¡Hola, SauceStreet! Me gustaría conocer más sobre su colección.",
+        whatsappEmailMessage: "¡Hola, SauceStreet! Me gustaría recibir información sobre sus productos. Mi correo es: {email}"
+      }
+    };
+
+    const productNames = {
+      en: {
+        tee: "Oversized Essential Tee",
+        cap: "Urban Classic Cap",
+        jersey: "Football Culture Jersey",
+        collection: "Streetwear Collection"
+      },
+      es: {
+        tee: "Camiseta Oversized Essential",
+        cap: "Gorra Urban Classic",
+        jersey: "Jersey Football Culture",
+        collection: "Colección Streetwear"
+      }
+    };
+
+    let currentLanguage = "en";
+
+    function translate(key, language = currentLanguage) {
+      return translations[language]?.[key] ?? translations.en[key] ?? key;
+    }
+
+    function setLanguage(language) {
+      if (!translations[language]) return;
+
+      currentLanguage = language;
+
+      // Update normal text and translated HTML fragments.
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        const value = translate(key, language);
+
+        // Only designated elements contain intentional HTML, such as accent spans.
+        const allowHTML = [
+          "categoryHeading",
+          "featuredHeading",
+          "storyHeading",
+          "contactHeading",
+          "stampText"
+        ].includes(key);
+
+        if (allowHTML) {
+          element.innerHTML = value;
+        } else {
+          element.textContent = value;
+        }
+      });
+
+      // Translate input placeholders.
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+        element.placeholder = translate(element.dataset.i18nPlaceholder, language);
+      });
+
+      // Translate accessible labels.
+      document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+        element.setAttribute(
+          "aria-label",
+          translate(element.dataset.i18nAria, language)
+        );
+      });
+
+      // Translate image descriptions.
+      document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+        element.alt = translate(element.dataset.i18nAlt, language);
+      });
+
+      // Update page language and title.
+      document.documentElement.lang = language;
+      document.title = language === "es"
+        ? "SauceStreet® | Moda Urbana y Cultura del Fútbol"
+        : "SauceStreet® | Streetwear & Football Culture";
+
+      // Update the language buttons.
+      document.querySelectorAll(".lang-btn").forEach((button) => {
+        const active = button.dataset.lang === language;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      // Update the Instagram profile URL if configured.
+      document.getElementById("footerInstagram").href = CONFIG.instagramUrl;
+
+      // Save the visitor's preference in this browser.
+      try {
+        localStorage.setItem("saucestreet-language", language);
+      } catch (error) {
+        // Language switching still works if browser storage is unavailable.
+      }
+    }
+
+    // Language selector
+    document.querySelectorAll(".lang-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    // Restore the visitor's saved language.
+    let savedLanguage = "en";
+
+    try {
+      savedLanguage = localStorage.getItem("saucestreet-language") || "en";
+    } catch (error) {
+      savedLanguage = "en";
+    }
+
+    setLanguage(savedLanguage);
+
     // WhatsApp helpers
     function isWhatsAppConfigured() {
-      return (
+      return Boolean(
         CONFIG.whatsappNumber &&
         /^\d+$/.test(CONFIG.whatsappNumber) &&
         CONFIG.whatsappNumber !== "TU_NUMERO_DE_WHATSAPP"
@@ -1712,9 +2074,7 @@
 
     function openWhatsApp(message) {
       if (!isWhatsAppConfigured()) {
-        alert(
-          "WhatsApp is not configured yet. Open the HTML file and replace TU_NUMERO_DE_WHATSAPP with your number, including the country code."
-        );
+        alert(translate("whatsappNotConfigured"));
         return;
       }
 
@@ -1727,14 +2087,18 @@
       window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    // Product inquiry buttons
+    // Product inquiry buttons use the currently selected language.
     document.querySelectorAll("[data-product]").forEach((button) => {
       button.addEventListener("click", () => {
-        const productName = button.dataset.product;
+        const productKey = button.dataset.product;
+        const productName =
+          productNames[currentLanguage][productKey] ||
+          productNames.en[productKey];
 
-        openWhatsApp(
-          `Hello SauceStreet! I'm interested in the ${productName}. Could you please share more details about availability, sizes and payment options?`
-        );
+        const message = translate("whatsappProductMessage")
+          .replace("{product}", productName);
+
+        openWhatsApp(message);
       });
     });
 
@@ -1746,7 +2110,12 @@
       navLinks.classList.remove("open");
       document.body.classList.remove("menu-open");
       menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      menuToggle.setAttribute(
+        "aria-label",
+        currentLanguage === "es"
+          ? "Abrir menú de navegación"
+          : "Open navigation menu"
+      );
       menuToggle.textContent = "☰";
     }
 
@@ -1757,7 +2126,9 @@
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
+        isOpen
+          ? (currentLanguage === "es" ? "Cerrar menú de navegación" : "Close navigation menu")
+          : (currentLanguage === "es" ? "Abrir menú de navegación" : "Open navigation menu")
       );
       menuToggle.textContent = isOpen ? "✕" : "☰";
     });
@@ -1767,34 +2138,26 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
+      if (event.key === "Escape") closeMenu();
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 760) {
-        closeMenu();
-      }
+      if (window.innerWidth > 760) closeMenu();
     });
 
-    // Footer WhatsApp
-    document.getElementById("footerWhatsapp").addEventListener("click", (event) => {
+    // Footer and floating WhatsApp links
+    function openGeneralWhatsApp(event) {
       event.preventDefault();
-      openWhatsApp("Hello SauceStreet! I'd like to know more about your collection.");
-    });
+      openWhatsApp(translate("whatsappGeneralMessage"));
+    }
 
-    // Floating WhatsApp
-    document.getElementById("floatingWhatsapp").addEventListener("click", (event) => {
-      event.preventDefault();
-      openWhatsApp("Hello SauceStreet! I'd like to know more about your collection.");
-    });
+    document.getElementById("footerWhatsapp")
+      .addEventListener("click", openGeneralWhatsApp);
 
-    // Instagram
-    const instagramLink = document.getElementById("footerInstagram");
-    instagramLink.href = CONFIG.instagramUrl;
+    document.getElementById("floatingWhatsapp")
+      .addEventListener("click", openGeneralWhatsApp);
 
-    // Contact form opens WhatsApp. No email is stored or submitted to a server.
+    // Contact form: opens WhatsApp, without saving or submitting an email.
     document.getElementById("contactForm").addEventListener("submit", (event) => {
       event.preventDefault();
 
@@ -1806,9 +2169,10 @@
         return;
       }
 
-      openWhatsApp(
-        `Hello SauceStreet! I'd like to receive information about your products. My email is: ${email}`
-      );
+      const message = translate("whatsappEmailMessage")
+        .replace("{email}", email);
+
+      openWhatsApp(message);
     });
 
     // Dynamic copyright year
@@ -1841,4 +2205,3 @@
   </script>
 </body>
 </html>
-
