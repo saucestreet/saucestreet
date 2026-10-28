@@ -1,0 +1,1899 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#120D17">
+  <meta name="description" content="SauceStreet: streetwear, franelas oversize, gorras y jerseys de fútbol. Encuentra tu estilo y viste diferente.">
+
+  <meta property="og:title" content="SauceStreet® | Streetwear & Football Culture">
+  <meta property="og:description" content="No sigas tendencias. Crea tu propia identidad. Descubre SauceStreet.">
+  <meta property="og:type" content="website">
+
+  <title>SauceStreet® | Streetwear & Football Culture</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #120D17;
+      --surface: #1D1523;
+      --surface-light: #281C31;
+      --white: #FAF8FC;
+      --muted: #B5A9BD;
+      --purple: #BC78FF;
+      --purple-light: #D8B5FF;
+      --border: #3A2A43;
+      --max-width: 1240px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "DM Sans", Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      background: var(--purple);
+      color: var(--bg);
+    }
+
+    .container {
+      width: min(var(--max-width), 91%);
+      margin-inline: auto;
+    }
+
+    .announcement {
+      padding: 9px 15px;
+      background: var(--purple);
+      color: var(--bg);
+      text-align: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(18, 13, 23, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: -1.8px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--purple-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 13px 20px;
+      border: 1px solid var(--purple);
+      background: transparent;
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition),
+        border-color var(--transition);
+    }
+
+    .button-primary {
+      background: var(--purple);
+      color: var(--bg);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--purple-light);
+      background: var(--purple-light);
+      color: var(--bg);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 43px;
+      height: 43px;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      font-size: 22px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      padding-block: 78px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--purple-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: var(--purple);
+    }
+
+    .hero h1 {
+      margin-block: 24px;
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-size: clamp(76px, 10vw, 132px);
+      font-weight: 900;
+      line-height: 0.78;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-top: 12px;
+      color: var(--purple);
+    }
+
+    .hero-description {
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-note {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-note span {
+      color: var(--purple-light);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(
+          ellipse at 50% 40%,
+          #58376A 0%,
+          #281C31 50%,
+          #17101C 100%
+        );
+      border: 1px solid var(--border);
+    }
+
+    .hero-visual::after {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      background: linear-gradient(
+        0deg,
+        rgba(18, 13, 23, 0.85) 0%,
+        transparent 45%,
+        rgba(18, 13, 23, 0.08) 100%
+      );
+    }
+
+    .hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 600ms ease;
+    }
+
+    .hero-visual:hover img {
+      transform: scale(1.04);
+    }
+
+    .hero-watermark {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 48%;
+      transform: translate(-50%, -50%);
+      color: rgba(216, 181, 255, 0.22);
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-size: clamp(65px, 10vw, 120px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      position: absolute;
+      z-index: 3;
+      left: 20px;
+      bottom: 20px;
+      padding: 11px 14px;
+      background: var(--purple);
+      color: var(--bg);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-index {
+      position: absolute;
+      z-index: 3;
+      right: 20px;
+      top: 20px;
+      color: var(--white);
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    /* MOVING TEXT */
+
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .ticker-track {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 25px;
+      padding: 17px 15px;
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .ticker span {
+      color: var(--purple);
+    }
+
+    /* GENERAL SECTIONS */
+
+    .section {
+      padding-block: 90px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 35px;
+    }
+
+    .section-header h2,
+    .promo h2,
+    .newsletter h2 {
+      margin-top: 12px;
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+    }
+
+    .section-description {
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category {
+      position: relative;
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .category-image {
+      position: relative;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .category-image::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(
+        0deg,
+        rgba(18, 13, 23, 0.95) 0%,
+        rgba(18, 13, 23, 0.1) 75%
+      );
+    }
+
+    .category:hover .category-image img {
+      transform: scale(1.06);
+    }
+
+    .category-info {
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      bottom: 23px;
+      left: 20px;
+    }
+
+    .category-number {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--purple-light);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .category-info h3 {
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .category-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .category-link span {
+      color: var(--purple-light);
+    }
+
+    /* PRODUCTS */
+
+    .products-section {
+      background: #17101C;
+      border-block: 1px solid var(--border);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      min-width: 0;
+    }
+
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .product-image img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      transition: transform 450ms ease;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.045);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 7px 10px;
+      background: var(--purple);
+      color: var(--bg);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding-top: 17px;
+    }
+
+    .product-category {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      margin-top: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .product-description {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .price {
+      color: var(--purple-light);
+      font-size: 17px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .buy-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 43px;
+      margin-top: 15px;
+      padding: 11px;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      transition: all var(--transition);
+    }
+
+    .buy-button:hover {
+      background: var(--purple);
+      color: var(--bg);
+      border-color: var(--purple);
+    }
+
+    /* BRAND STORY */
+
+    .promo {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          ellipse at 100% 50%,
+          rgba(188, 120, 255, 0.15),
+          transparent 45%
+        ),
+        var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .promo-content {
+      display: grid;
+      grid-template-columns: 1fr 0.65fr;
+      align-items: center;
+      gap: 50px;
+      padding-block: 85px;
+    }
+
+    .promo h2 span {
+      color: var(--purple);
+    }
+
+    .promo-description {
+      max-width: 580px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .promo-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+    }
+
+    .promo-stat {
+      padding-left: 18px;
+      border-left: 2px solid var(--purple);
+    }
+
+    .promo-stat strong {
+      display: block;
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .promo-stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter {
+      padding-block: 80px;
+    }
+
+    .newsletter-box {
+      padding: 55px 25px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      margin-top: 15px;
+    }
+
+    .newsletter-description {
+      max-width: 470px;
+      margin: 17px auto 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 9px;
+      width: min(520px, 100%);
+      margin: 27px auto 0;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      min-height: 49px;
+      padding: 12px 15px;
+      background: var(--bg);
+      color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      font-size: 12px;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #92859B;
+    }
+
+    .newsletter-form button {
+      min-height: 49px;
+      padding: 12px 17px;
+      background: var(--purple);
+      color: var(--bg);
+      border: 1px solid var(--purple);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--purple-light);
+    }
+
+    .form-message {
+      min-height: 20px;
+      margin-top: 13px;
+      color: var(--purple-light);
+      font-size: 11px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding-top: 55px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 1fr;
+      gap: 45px;
+      padding-bottom: 45px;
+    }
+
+    .footer-description {
+      max-width: 340px;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .footer h4 {
+      margin-bottom: 18px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 12px;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--purple-light);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-block: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* WHATSAPP FLOATING BUTTON */
+
+    .whatsapp-float {
+      position: fixed;
+      z-index: 90;
+      right: 22px;
+      bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      color: #07180D;
+      border: none;
+      border-radius: 50%;
+      font-size: 23px;
+      font-weight: 900;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
+      transition: transform var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-4px);
+    }
+
+    /* RESPONSIVE */
+
+    @media (min-width: 1500px) {
+      .hero h1 {
+        font-size: 140px;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .nav {
+        gap: 18px;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .hero {
+        gap: 25px;
+      }
+
+      .hero-visual {
+        min-height: 440px;
+      }
+
+      .category-image {
+        height: 290px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px 20px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      html {
+        scroll-padding-top: 80px;
+      }
+
+      .announcement {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+      }
+
+      .nav {
+        min-height: 68px;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-block: 10px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      .nav-actions {
+        margin-left: auto;
+      }
+
+      .nav-actions > .button {
+        min-height: 40px;
+        padding: 10px 12px;
+        font-size: 9px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        order: 3;
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding-block: 10px;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 4px;
+        font-size: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-block: 52px;
+      }
+
+      .hero h1 {
+        font-size: clamp(76px, 17vw, 115px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-visual {
+        min-height: 410px;
+      }
+
+      .ticker-track {
+        gap: 10px 15px;
+        padding-block: 15px;
+        font-size: 9px;
+      }
+
+      .section {
+        padding-block: 60px;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 25px;
+      }
+
+      .section-header h2,
+      .promo h2,
+      .newsletter h2 {
+        font-size: 49px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .category-image {
+        height: 340px;
+      }
+
+      .products {
+        gap: 26px 12px;
+      }
+
+      .product-info h3 {
+        font-size: 12px;
+      }
+
+      .product-description {
+        font-size: 10px;
+      }
+
+      .price {
+        font-size: 15px;
+      }
+
+      .product-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .buy-button {
+        min-height: 42px;
+        padding: 9px 5px;
+        font-size: 9px;
+      }
+
+      .promo-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-block: 60px;
+      }
+
+      .promo-description {
+        font-size: 12px;
+      }
+
+      .newsletter {
+        padding-block: 55px;
+      }
+
+      .newsletter-box {
+        padding: 42px 18px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form button {
+        width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 20px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .whatsapp-float {
+        right: 15px;
+        bottom: 15px;
+        width: 49px;
+        height: 49px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .container {
+        width: 93%;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .nav-actions {
+        gap: 6px;
+      }
+
+      .nav-actions > .button {
+        padding-inline: 9px;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+      }
+
+      .hero-visual {
+        min-height: 330px;
+      }
+
+      .category-image {
+        height: 280px;
+      }
+
+      .product-tag {
+        top: 7px;
+        left: 7px;
+        padding: 6px;
+        font-size: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    SAUCESTREET® — STREETWEAR CULTURE — OWN YOUR STYLE
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+
+      <a href="#inicio" class="logo" aria-label="SauceStreet, inicio">
+        SauceStreet<span>®</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#productos">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#productos" class="button button-primary">
+          Shop now ↗
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menuButton"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="navLinks"
+          aria-expanded="false">
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="container hero" id="inicio">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">Streetwear & Football Culture</div>
+
+        <h1>
+          OWN YOUR
+          <span>STYLE.</span>
+        </h1>
+
+        <p class="hero-description">
+          No sigas tendencias. Crea tu propia identidad.
+          Descubre una colección inspirada en el streetwear,
+          la cultura urbana y la pasión por el fútbol.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#productos" class="button button-primary">
+            Comprar ahora ↗
+          </a>
+
+          <a href="#categorias" class="button">
+            Ver colección
+          </a>
+        </div>
+
+        <p class="hero-note">
+          Streetwear <span>✦</span>
+          Football <span>✦</span>
+          Your identity
+        </p>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <img
+          src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1100&q=85"
+          alt="Inspiración de moda streetwear"
+          fetchpriority="high">
+
+        <div class="hero-watermark" aria-hidden="true">
+          SAUCE
+        </div>
+
+        <div class="hero-index">001 / SS26</div>
+
+        <div class="hero-badge">
+          SauceStreet® — New era
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- BRAND TICKER -->
+
+    <div class="ticker" aria-label="Estilo SauceStreet">
+      <div class="ticker-track">
+        STREET CULTURE <span>✦</span>
+        FOOTBALL JERSEYS <span>✦</span>
+        OVERSIZED FITS <span>✦</span>
+        OWN YOUR STYLE
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+
+    <section class="section" id="categorias">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="eyebrow">Encuentra tu estilo</div>
+            <h2>Shop by category</h2>
+          </div>
+
+          <p class="section-description">
+            Piezas inspiradas en la cultura urbana para quienes
+            hacen de su estilo una forma de expresión.
+          </p>
+
+        </div>
+
+        <div class="categories">
+
+          <a class="category" href="#productos" aria-label="Explorar franelas oversize">
+
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"
+                alt="Franelas para un estilo urbano"
+                loading="lazy">
+            </div>
+
+            <div class="category-info">
+              <span class="category-number">01 / APPAREL</span>
+              <h3>Oversized Tees</h3>
+              <span class="category-link">
+                Explorar colección <span>↗</span>
+              </span>
+            </div>
+
+          </a>
+
+          <a class="category" href="#productos" aria-label="Explorar gorras">
+
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85"
+                alt="Gorras para completar tu outfit"
+                loading="lazy">
+            </div>
+
+            <div class="category-info">
+              <span class="category-number">02 / ACCESSORIES</span>
+              <h3>Caps & Hats</h3>
+              <span class="category-link">
+                Explorar colección <span>↗</span>
+              </span>
+            </div>
+
+          </a>
+
+          <a class="category" href="#productos" aria-label="Explorar jerseys de fútbol">
+
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=85"
+                alt="Cultura futbolística y jerseys"
+                loading="lazy">
+            </div>
+
+            <div class="category-info">
+              <span class="category-number">03 / FOOTBALL</span>
+              <h3>Football Jerseys</h3>
+              <span class="category-link">
+                Explorar colección <span>↗</span>
+              </span>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="section products-section" id="productos">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="eyebrow">Descubre SauceStreet</div>
+            <h2>Latest drops</h2>
+          </div>
+
+          <p class="section-description">
+            Explora nuestra selección de prendas y accesorios.
+            Consulta disponibilidad y detalles directamente por WhatsApp.
+          </p>
+
+        </div>
+
+        <div class="products">
+
+          <!-- PRODUCT 1 -->
+
+          <article class="product">
+
+            <div class="product-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=650&q=85"
+                alt="Oversized Essential Tee"
+                loading="lazy">
+
+              <span class="product-tag">Best seller</span>
+
+            </div>
+
+            <div class="product-info">
+
+              <span class="product-category">Streetwear / Unisex</span>
+
+              <h3>Oversized Essential Tee</h3>
+
+              <p class="product-description">
+                Un básico para tu outfit diario.
+              </p>
+
+              <div class="product-bottom">
+                <div class="price">12 <small>USDT</small></div>
+              </div>
+
+              <button
+                class="buy-button"
+                type="button"
+                data-product="Oversized Essential Tee"
+                data-price="12">
+                Consultar producto ↗
+              </button>
+
+            </div>
+
+          </article>
+
+          <!-- PRODUCT 2 -->
+
+          <article class="product">
+
+            <div class="product-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=650&q=85"
+                alt="Urban Classic Cap"
+                loading="lazy">
+
+              <span class="product-tag">New drop</span>
+
+            </div>
+
+            <div class="product-info">
+
+              <span class="product-category">Accessories / Unisex</span>
+
+              <h3>Urban Classic Cap</h3>
+
+              <p class="product-description">
+                El detalle que completa tu estilo.
+              </p>
+
+              <div class="product-bottom">
+                <div class="price">9 <small>USDT</small></div>
+              </div>
+
+              <button
+                class="buy-button"
+                type="button"
+                data-product="Urban Classic Cap"
+                data-price="9">
+                Consultar producto ↗
+              </button>
+
+            </div>
+
+          </article>
+
+          <!-- PRODUCT 3 -->
+
+          <article class="product">
+
+            <div class="product-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=650&q=85"
+                alt="Football Culture Jersey"
+                loading="lazy">
+
+              <span class="product-tag">Football</span>
+
+            </div>
+
+            <div class="product-info">
+
+              <span class="product-category">Football / Fan style</span>
+
+              <h3>Football Culture Jersey</h3>
+
+              <p class="product-description">
+                Fútbol, identidad y cultura urbana.
+              </p>
+
+              <div class="product-bottom">
+                <div class="price">18 <small>USDT</small></div>
+              </div>
+
+              <button
+                class="buy-button"
+                type="button"
+                data-product="Football Culture Jersey"
+                data-price="18">
+                Consultar producto ↗
+              </button>
+
+            </div>
+
+          </article>
+
+          <!-- PRODUCT 4 -->
+
+          <article class="product">
+
+            <div class="product-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=650&q=85"
+                alt="Streetwear Collection"
+                loading="lazy">
+
+              <span class="product-tag">Collection</span>
+
+            </div>
+
+            <div class="product-info">
+
+              <span class="product-category">Urban / Unisex</span>
+
+              <h3>Streetwear Collection</h3>
+
+              <p class="product-description">
+                Encuentra piezas para tu propio estilo.
+              </p>
+
+              <div class="product-bottom">
+                <div class="price">15 <small>USDT</small></div>
+              </div>
+
+              <button
+                class="buy-button"
+                type="button"
+                data-product="Streetwear Collection"
+                data-price="15">
+                Consultar producto ↗
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ABOUT THE BRAND -->
+
+    <section class="promo" id="nosotros">
+
+      <div class="container promo-content">
+
+        <div>
+
+          <div class="eyebrow">Más que ropa</div>
+
+          <h2>
+            Wear your
+            <br>
+            <span>identity.</span>
+          </h2>
+
+          <p class="promo-description">
+            SauceStreet nace de la cultura urbana, la pasión por
+            el fútbol y la libertad de vestir a tu manera.
+
+            <br><br>
+
+            Creemos que el estilo no consiste en seguir lo que
+            todos hacen, sino en encontrar lo que te representa.
+            Cada outfit es una forma de expresarte. Cada detalle
+            habla de quién eres.
+
+            <br><br>
+
+            No se trata solamente de lo que llevas puesto,
+            sino de cómo lo representas.
+          </p>
+
+        </div>
+
+        <div class="promo-side">
+
+          <div class="promo-stat">
+            <strong>Your style.</strong>
+            <span>Tu identidad, tus reglas.</span>
+          </div>
+
+          <div class="promo-stat">
+            <strong>Your culture.</strong>
+            <span>Streetwear y fútbol en una sola vibra.</span>
+          </div>
+
+          <div class="promo-stat">
+            <strong>Your sauce.</strong>
+            <span>Lo que te hace diferente.</span>
+          </div>
+
+          <a href="#productos" class="button button-primary">
+            Descubre SauceStreet ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+      <div class="container">
+
+        <div class="newsletter-box">
+
+          <div class="eyebrow">Join the movement</div>
+
+          <h2>Stay in the loop.</h2>
+
+          <p class="newsletter-description">
+            ¿Quieres conocer los próximos lanzamientos y novedades?
+            Déjanos tu correo para consultar cómo recibir información
+            de SauceStreet.
+          </p>
+
+          <form class="newsletter-form" id="newsletterForm">
+
+            <input
+              type="email"
+              id="newsletterEmail"
+              name="email"
+              placeholder="Tu correo electrónico"
+              aria-label="Tu correo electrónico"
+              autocomplete="email"
+              required>
+
+            <button type="submit">
+              Quiero saber más ↗
+            </button>
+
+          </form>
+
+          <p
+            class="form-message"
+            id="newsletterMessage"
+            aria-live="polite">
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer" id="contacto">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <a href="#inicio" class="logo">
+            SauceStreet<span>®</span>
+          </a>
+
+          <p class="footer-description">
+            Streetwear, fútbol y cultura urbana.
+            Viste diferente. Encuentra tu estilo.
+            Own your identity.
+          </p>
+
+        </div>
+
+        <div>
+
+          <h4>Explorar</h4>
+
+          <div class="footer-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#categorias">Categorías</a>
+            <a href="#productos">Productos</a>
+            <a href="#nosotros">Nosotros</a>
+          </div>
+
+        </div>
+
+        <div>
+
+          <h4>Conecta con nosotros</h4>
+
+          <div class="footer-links">
+
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer">
+              Instagram ↗
+            </a>
+
+            <a
+              href="#contacto"
+              id="footerWhatsapp">
+              WhatsApp ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="currentYear">2026</span> SauceStreet®.
+          Todos los derechos reservados.
+        </span>
+
+        <span>
+          PRECIOS EN USDT · STREETWEAR & FOOTBALL CULTURE
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+
+  <a
+    href="#contacto"
+    class="whatsapp-float"
+    id="floatingWhatsapp"
+    aria-label="Contactar a SauceStreet por WhatsApp"
+    title="Contactar por WhatsApp">
+    W
+  </a>
+
+  <script>
+    /*
+    ==========================================================
+    SAUCESTREET CONFIGURATION
+    ==========================================================
+
+    1. Add your WhatsApp number using the international format.
+       Example for Costa Rica: 50688887777
+       Use numbers only, without +, spaces or dashes.
+
+    2. Replace the Instagram URL with your real profile.
+
+    3. Product prices are examples. Update them before selling.
+
+    ==========================================================
+    */
+
+    const CONFIG = {
+      whatsappNumber: "TU_NUMERO_DE_WHATSAPP",
+      instagramUrl: "https://www.instagram.com/",
+      currency: "USDT"
+    };
+
+
+    // MOBILE NAVIGATION
+
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    function closeMenu() {
+      navLinks.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Abrir menú");
+      menuButton.textContent = "☰";
+      document.body.classList.remove("menu-open");
+    }
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Cerrar menú" : "Abrir menú"
+      );
+
+      menuButton.textContent = isOpen ? "✕" : "☰";
+
+      document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+
+    // WHATSAPP
+
+    function isWhatsAppConfigured() {
+      return /^[0-9]{8,15}$/.test(CONFIG.whatsappNumber);
+    }
+
+    function openWhatsApp(message) {
+      if (!isWhatsAppConfigured()) {
+        alert(
+          "WhatsApp todavía no está configurado. " +
+          "Agrega el número de contacto de SauceStreet " +
+          "en la sección CONFIGURATION del código."
+        );
+
+        return;
+      }
+
+      const url =
+        "https://wa.me/" +
+        CONFIG.whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function buyProduct(name, price) {
+      const message =
+        "Hola, me interesa este producto de SauceStreet:\n\n" +
+        "Producto: " + name + "\n" +
+        "Precio de referencia: " + price + " " + CONFIG.currency + "\n\n" +
+        "¿Me pueden confirmar disponibilidad, tallas y detalles de compra?";
+
+      openWhatsApp(message);
+    }
+
+    document.querySelectorAll(".buy-button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const name = button.dataset.product;
+        const price = Number(button.dataset.price);
+
+        if (!name || !Number.isFinite(price) || price < 0) {
+          alert("No se pudo identificar el producto. Inténtalo nuevamente.");
+          return;
+        }
+
+        buyProduct(name, price);
+      });
+    });
+
+
+    // WHATSAPP LINKS
+
+    const floatingWhatsapp = document.getElementById("floatingWhatsapp");
+    const footerWhatsapp = document.getElementById("footerWhatsapp");
+
+    function configureWhatsAppLink(element, message) {
+      if (isWhatsAppConfigured()) {
+        element.href =
+          "https://wa.me/" +
+          CONFIG.whatsappNumber +
+          "?text=" +
+          encodeURIComponent(message);
+
+        element.target = "_blank";
+        element.rel = "noopener noreferrer";
+      } else {
+        element.href = "#contacto";
+
+        element.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          alert(
+            "Configura el número de WhatsApp de SauceStreet " +
+            "en la sección CONFIGURATION del código."
+          );
+        });
+      }
+    }
+
+    configureWhatsAppLink(
+      floatingWhatsapp,
+      "Hola, quisiera obtener más información sobre SauceStreet."
+    );
+
+    configureWhatsAppLink(
+      footerWhatsapp,
+      "Hola, quisiera contactar a SauceStreet."
+    );
+
+
+    // INSTAGRAM
+
+    const instagramLink = document.querySelector(
+      '.footer-links a[href="https://www.instagram.com/"]'
+    );
+
+    if (instagramLink) {
+      instagramLink.href = CONFIG.instagramUrl;
+    }
+
+
+    // NEWSLETTER
+
+    const newsletterForm = document.getElementById("newsletterForm");
+    const newsletterEmail = document.getElementById("newsletterEmail");
+    const newsletterMessage = document.getElementById("newsletterMessage");
+
+    newsletterForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = newsletterEmail.value.trim();
+
+      if (!newsletterEmail.checkValidity() || !email) {
+        newsletterEmail.reportValidity();
+        return;
+      }
+
+      /*
+      This static website does not store email addresses.
+      Connect a newsletter service or backend before collecting
+      and storing subscribers.
+      */
+
+      newsletterMessage.textContent =
+        "El formulario todavía no está conectado. " +
+        "Puedes contactarnos por WhatsApp para conocer las novedades.";
+
+      newsletterEmail.value = "";
+    });
+
+
+    // CURRENT YEAR
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
+```
