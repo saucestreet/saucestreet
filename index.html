@@ -1,38 +1,42 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="theme-color" content="#120D17">
-  <meta name="description" content="SauceStreet: streetwear, franelas oversize, gorras y jerseys de fútbol. Encuentra tu estilo y viste diferente.">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100916">
+  <meta name="description" content="SauceStreet® — Streetwear, oversized tees, caps and football culture. Find your style. Own your energy.">
   <meta property="og:title" content="SauceStreet® | Streetwear & Football Culture">
-  <meta property="og:description" content="No sigas tendencias. Crea tu propia identidad. Descubre SauceStreet.">
+  <meta property="og:description" content="Streetwear with attitude. Discover the SauceStreet collection.">
   <meta property="og:type" content="website">
 
   <title>SauceStreet® | Streetwear & Football Culture</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #120D17;
-      --surface: #1D1523;
-      --surface-light: #281C31;
-      --white: #FAF8FC;
-      --muted: #B5A9BD;
-      --purple: #BC78FF;
-      --purple-light: #D8B5FF;
-      --border: #3A2A43;
+      --bg: #100916;
+      --bg-soft: #170e20;
+      --surface: #201329;
+      --surface-light: #2b1937;
+      --purple: #bd78ff;
+      --purple-light: #d9b3ff;
+      --purple-dark: #7438a8;
+      --white: #fbf7ff;
+      --muted: #b9a9c5;
+      --border: rgba(217, 179, 255, 0.16);
+      --success: #b7f7c6;
       --max-width: 1240px;
+      --radius: 18px;
       --transition: 220ms ease;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -46,13 +50,23 @@
     body {
       background: var(--bg);
       color: var(--white);
-      font-family: "DM Sans", Arial, sans-serif;
+      font-family: "DM Sans", sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
     body.menu-open {
       overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     button,
@@ -65,78 +79,147 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
     button:focus-visible,
     a:focus-visible,
     input:focus-visible {
-      outline: 2px solid var(--purple);
+      outline: 2px solid var(--purple-light);
       outline-offset: 4px;
     }
 
     ::selection {
       background: var(--purple);
-      color: var(--bg);
+      color: #160c20;
     }
 
     .container {
-      width: min(var(--max-width), 91%);
+      width: min(var(--max-width), calc(100% - 48px));
       margin-inline: auto;
     }
 
-    .announcement {
-      padding: 9px 15px;
-      background: var(--purple);
-      color: var(--bg);
-      text-align: center;
-      font-size: 10px;
+    .section {
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--purple-light);
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
-    /* HEADER */
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--purple);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      margin-top: 13px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      max-width: 540px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .accent {
+      color: var(--purple);
+    }
+
+    /* Announcement */
+
+    .announcement {
+      position: relative;
+      z-index: 20;
+      padding: 9px 16px;
+      background: var(--purple);
+      color: #180b22;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    /* Header */
 
     .header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(18, 13, 23, 0.94);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px);
+      background: rgba(16, 9, 22, 0.91);
+      backdrop-filter: blur(18px);
     }
 
     .nav {
-      min-height: 78px;
       display: flex;
+      min-height: 78px;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 28px;
     }
 
     .logo {
       display: inline-flex;
+      flex-shrink: 0;
       align-items: center;
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: -1.8px;
-      white-space: nowrap;
+      gap: 10px;
     }
 
-    .logo span {
+    .logo-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(217, 179, 255, 0.55);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #382044, #170d21);
+      box-shadow: 0 0 24px rgba(189, 120, 255, 0.13);
+      color: var(--purple-light);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .logo-name {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-name span {
       color: var(--purple);
+    }
+
+    .logo-tagline {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -146,11 +229,9 @@
     }
 
     .nav-links a {
-      color: var(--muted);
+      color: #d2c5db;
       font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
+      font-weight: 700;
       transition: color var(--transition);
     }
 
@@ -158,105 +239,153 @@
       color: var(--purple-light);
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .nav-cta,
     .button {
       display: inline-flex;
+      min-height: 46px;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 48px;
-      padding: 13px 20px;
-      border: 1px solid var(--purple);
-      background: transparent;
-      color: var(--white);
-      font-size: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background: var(--purple);
+      color: #190c23;
+      cursor: pointer;
+      font-size: 11px;
       font-weight: 900;
       letter-spacing: 1px;
+      text-align: center;
       text-transform: uppercase;
       transition:
-        background var(--transition),
-        color var(--transition),
         transform var(--transition),
-        border-color var(--transition);
+        background var(--transition),
+        box-shadow var(--transition);
     }
 
-    .button-primary {
-      background: var(--purple);
-      color: var(--bg);
-    }
-
+    .nav-cta:hover,
     .button:hover {
-      transform: translateY(-2px);
-      border-color: var(--purple-light);
+      transform: translateY(-3px);
       background: var(--purple-light);
-      color: var(--bg);
+      box-shadow: 0 8px 28px rgba(189, 120, 255, 0.2);
+    }
+
+    .button-outline {
+      border-color: rgba(217, 179, 255, 0.45);
+      background: rgba(20, 10, 29, 0.55);
+      color: var(--white);
+    }
+
+    .button-outline:hover {
+      border-color: var(--purple);
+      background: rgba(189, 120, 255, 0.12);
+      color: var(--purple-light);
     }
 
     .menu-toggle {
       display: none;
-      width: 43px;
-      height: 43px;
+      width: 44px;
+      height: 44px;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      color: var(--white);
       border: 1px solid var(--border);
-      font-size: 22px;
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 23px;
     }
 
-    /* HERO */
+    /* Hero */
 
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      min-height: 660px;
       align-items: center;
-      gap: 45px;
-      padding-block: 78px;
+      overflow: hidden;
+      background: #180d22;
     }
 
-    .eyebrow {
+    .hero::before {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        linear-gradient(90deg,
+          rgba(16, 9, 22, 0.98) 0%,
+          rgba(16, 9, 22, 0.89) 34%,
+          rgba(16, 9, 22, 0.48) 68%,
+          rgba(16, 9, 22, 0.25) 100%),
+        linear-gradient(0deg, rgba(16, 9, 22, 0.7), transparent 45%),
+        url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=2000&q=85")
+        center 38% / cover;
+      content: "";
+      transform: scale(1.02);
+    }
+
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      top: -160px;
+      right: -160px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(139, 61, 197, 0.19);
+      content: "";
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      width: min(760px, 100%);
+      padding: 100px 0 110px;
+    }
+
+    .hero-label {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
+      padding: 9px 13px;
+      border: 1px solid rgba(217, 179, 255, 0.35);
+      border-radius: 4px;
+      background: rgba(32, 19, 41, 0.62);
       color: var(--purple-light);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    .eyebrow::before {
-      content: "";
-      display: inline-block;
-      width: 22px;
-      height: 2px;
+    .hero-label span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--purple);
+      box-shadow: 0 0 12px var(--purple);
     }
 
     .hero h1 {
-      margin-block: 24px;
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: clamp(76px, 10vw, 132px);
+      margin: 25px 0 20px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(65px, 10vw, 126px);
       font-weight: 900;
-      line-height: 0.78;
-      letter-spacing: -3px;
+      line-height: 0.82;
+      letter-spacing: -2px;
       text-transform: uppercase;
     }
 
-    .hero h1 span {
+    .hero h1 .line-purple {
       display: block;
-      margin-top: 12px;
       color: var(--purple);
+      text-shadow: 0 0 45px rgba(189, 120, 255, 0.18);
     }
 
-    .hero-description {
-      max-width: 460px;
-      color: var(--muted);
+    .hero-copy {
+      max-width: 470px;
+      color: #d0c3d8;
       font-size: 14px;
       line-height: 1.9;
     }
@@ -268,588 +397,589 @@
       margin-top: 30px;
     }
 
-    .hero-note {
-      margin-top: 32px;
-      color: var(--muted);
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      margin-top: 45px;
+      color: #d1c4da;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .hero-note span {
-      color: var(--purple-light);
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .hero-visual {
-      position: relative;
-      min-height: 520px;
-      overflow: hidden;
-      isolation: isolate;
-      background:
-        radial-gradient(
-          ellipse at 50% 40%,
-          #58376A 0%,
-          #281C31 50%,
-          #17101C 100%
-        );
-      border: 1px solid var(--border);
-    }
-
-    .hero-visual::after {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-      content: "";
-      pointer-events: none;
-      background: linear-gradient(
-        0deg,
-        rgba(18, 13, 23, 0.85) 0%,
-        transparent 45%,
-        rgba(18, 13, 23, 0.08) 100%
-      );
-    }
-
-    .hero-visual img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform 600ms ease;
-    }
-
-    .hero-visual:hover img {
-      transform: scale(1.04);
-    }
-
-    .hero-watermark {
-      position: absolute;
-      z-index: 2;
-      left: 50%;
-      top: 48%;
-      transform: translate(-50%, -50%);
-      color: rgba(216, 181, 255, 0.22);
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: clamp(65px, 10vw, 120px);
-      font-weight: 900;
-      letter-spacing: -5px;
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      position: absolute;
-      z-index: 3;
-      left: 20px;
-      bottom: 20px;
-      padding: 11px 14px;
+    .hero-meta span::before {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: var(--purple);
-      color: var(--bg);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      content: "";
     }
 
-    .hero-index {
-      position: absolute;
-      z-index: 3;
-      right: 20px;
-      top: 20px;
-      color: var(--white);
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-    }
-
-    /* MOVING TEXT */
+    /* Ticker */
 
     .ticker {
       overflow: hidden;
-      border-block: 1px solid var(--border);
-      background: var(--surface);
+      border-top: 1px solid rgba(217, 179, 255, 0.2);
+      border-bottom: 1px solid rgba(217, 179, 255, 0.2);
+      background: #1b1025;
     }
 
     .ticker-track {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px 25px;
-      padding: 17px 15px;
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-align: center;
-      text-transform: uppercase;
+      width: max-content;
+      animation: ticker-scroll 32s linear infinite;
     }
 
-    .ticker span {
-      color: var(--purple);
-    }
-
-    /* GENERAL SECTIONS */
-
-    .section {
-      padding-block: 90px;
-    }
-
-    .section-header {
+    .ticker-group {
       display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 25px;
-      margin-bottom: 35px;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 30px;
+      padding: 17px 15px;
     }
 
-    .section-header h2,
-    .promo h2,
-    .newsletter h2 {
-      margin-top: 12px;
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: clamp(42px, 6vw, 68px);
-      font-weight: 900;
-      line-height: 0.95;
-      letter-spacing: -1px;
+    .ticker-item {
+      color: #e8d9f4;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .section-description {
-      max-width: 360px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
+    .ticker-star {
+      color: var(--purple);
+      font-size: 19px;
     }
 
-    /* CATEGORIES */
+    @keyframes ticker-scroll {
+      to { transform: translateX(-50%); }
+    }
 
-    .categories {
+    /* Categories */
+
+    .categories-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
     }
 
-    .category {
+    .category-card {
       position: relative;
-      display: block;
-      min-width: 0;
+      min-height: 370px;
       overflow: hidden;
-      background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      isolation: isolate;
     }
 
-    .category-image {
-      position: relative;
-      height: 350px;
-      overflow: hidden;
-    }
-
-    .category-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 500ms ease;
-    }
-
-    .category-image::after {
+    .category-card::before {
       position: absolute;
+      z-index: -2;
       inset: 0;
+      background-position: center;
+      background-size: cover;
       content: "";
+      transition: transform 600ms ease;
+    }
+
+    .category-card:hover::before {
+      transform: scale(1.07);
+    }
+
+    .category-card::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
       background: linear-gradient(
         0deg,
-        rgba(18, 13, 23, 0.95) 0%,
-        rgba(18, 13, 23, 0.1) 75%
+        rgba(16, 9, 22, 0.98) 0%,
+        rgba(16, 9, 22, 0.62) 38%,
+        rgba(16, 9, 22, 0.04) 100%
       );
+      content: "";
     }
 
-    .category:hover .category-image img {
-      transform: scale(1.06);
+    .category-tees::before {
+      background-image: url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85");
     }
 
-    .category-info {
+    .category-caps::before {
+      background-image: url("https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .category-football::before {
+      background-image: url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1000&q=85");
+    }
+
+    .category-content {
       position: absolute;
-      z-index: 2;
-      right: 20px;
-      bottom: 23px;
-      left: 20px;
+      right: 25px;
+      bottom: 25px;
+      left: 25px;
     }
 
     .category-number {
-      display: block;
-      margin-bottom: 5px;
       color: var(--purple-light);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
-    .category-info h3 {
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: 34px;
+    .category-content h3 {
+      margin: 8px 0 5px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 40px;
       font-weight: 800;
       line-height: 1;
       text-transform: uppercase;
     }
 
-    .category-link {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .category-content p {
+      margin-bottom: 18px;
+      color: #d4c6df;
+      font-size: 12px;
     }
 
-    .category-link span {
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: var(--purple-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: gap var(--transition);
     }
 
-    /* PRODUCTS */
-
-    .products-section {
-      background: #17101C;
-      border-block: 1px solid var(--border);
+    .text-link:hover {
+      gap: 16px;
     }
 
-    .products {
+    /* Collection */
+
+    .collection {
+      position: relative;
+      background:
+        radial-gradient(ellipse at 80% 10%, rgba(113, 52, 151, 0.12), transparent 40%),
+        var(--bg-soft);
+    }
+
+    .collection-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .collection-top .section-heading {
+      margin-bottom: 42px;
+    }
+
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 22px;
+      gap: 18px;
     }
 
-    .product {
+    .product-card {
       min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: linear-gradient(180deg, #24152e, #1b1024);
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(189, 120, 255, 0.6);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.23);
     }
 
     .product-image {
       position: relative;
       overflow: hidden;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      aspect-ratio: 4 / 4.5;
+      background: #2b1a35;
     }
 
     .product-image img {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      height: 100%;
       object-fit: cover;
-      transition: transform 450ms ease;
+      transition: transform 550ms ease;
     }
 
-    .product:hover .product-image img {
-      transform: scale(1.045);
+    .product-card:hover .product-image img {
+      transform: scale(1.06);
     }
 
     .product-tag {
       position: absolute;
       top: 12px;
       left: 12px;
-      padding: 7px 10px;
-      background: var(--purple);
-      color: var(--bg);
+      padding: 6px 9px;
+      border: 1px solid rgba(217, 179, 255, 0.2);
+      border-radius: 4px;
+      background: rgba(16, 9, 22, 0.82);
+      color: var(--purple-light);
       font-size: 9px;
       font-weight: 900;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
-    }
-
-    .product-info {
-      padding-top: 17px;
-    }
-
-    .product-category {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .product-info h3 {
-      margin-top: 6px;
-      font-size: 14px;
-      font-weight: 800;
-      line-height: 1.5;
+    .product-info {
+      padding: 17px;
     }
 
-    .product-description {
-      margin-top: 5px;
+    .product-category {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      margin: 7px 0 12px;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.4;
     }
 
     .product-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin-top: 13px;
+      gap: 8px;
     }
 
-    .price {
+    .product-price {
       color: var(--purple-light);
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 900;
       white-space: nowrap;
     }
 
-    .price small {
-      color: var(--muted);
-      font-size: 9px;
-    }
-
-    .buy-button {
-      display: flex;
+    .product-button {
+      display: inline-flex;
+      min-height: 36px;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      min-height: 43px;
-      margin-top: 15px;
-      padding: 11px;
+      padding: 0 11px;
+      border: 1px solid rgba(217, 179, 255, 0.3);
+      border-radius: 5px;
       background: transparent;
       color: var(--white);
-      border: 1px solid var(--border);
-      font-size: 10px;
+      cursor: pointer;
+      font-size: 9px;
       font-weight: 900;
       letter-spacing: 0.7px;
       text-transform: uppercase;
-      transition: all var(--transition);
+      transition: background var(--transition), color var(--transition);
     }
 
-    .buy-button:hover {
+    .product-button:hover {
       background: var(--purple);
-      color: var(--bg);
-      border-color: var(--purple);
+      color: #190c23;
     }
 
-    /* BRAND STORY */
-
-    .promo {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(
-          ellipse at 100% 50%,
-          rgba(188, 120, 255, 0.15),
-          transparent 45%
-        ),
-        var(--surface);
-      border-bottom: 1px solid var(--border);
+    .collection-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 11px;
     }
 
-    .promo-content {
+    /* Brand story */
+
+    .story-grid {
       display: grid;
-      grid-template-columns: 1fr 0.65fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 50px;
-      padding-block: 85px;
+      gap: 75px;
     }
 
-    .promo h2 span {
-      color: var(--purple);
+    .story-visual {
+      position: relative;
+      min-height: 500px;
     }
 
-    .promo-description {
-      max-width: 580px;
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    .promo-side {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 22px;
-    }
-
-    .promo-stat {
-      padding-left: 18px;
-      border-left: 2px solid var(--purple);
-    }
-
-    .promo-stat strong {
-      display: block;
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-size: 32px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .promo-stat span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    /* NEWSLETTER */
-
-    .newsletter {
-      padding-block: 80px;
-    }
-
-    .newsletter-box {
-      padding: 55px 25px;
+    .story-image {
+      position: absolute;
+      inset: 0 35px 35px 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 14px;
       background: var(--surface);
-      border: 1px solid var(--border);
-      text-align: center;
     }
 
-    .newsletter h2 {
-      margin-top: 15px;
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .newsletter-description {
-      max-width: 470px;
-      margin: 17px auto 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 9px;
-      width: min(520px, 100%);
-      margin: 27px auto 0;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      min-width: 0;
-      min-height: 49px;
-      padding: 12px 15px;
-      background: var(--bg);
-      color: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 0;
-      font-size: 12px;
-    }
-
-    .newsletter-form input::placeholder {
-      color: #92859B;
-    }
-
-    .newsletter-form button {
-      min-height: 49px;
-      padding: 12px 17px;
+    .story-stamp {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      width: 155px;
+      height: 155px;
+      place-items: center;
+      border: 7px solid var(--bg);
+      border-radius: 50%;
       background: var(--purple);
-      color: var(--bg);
-      border: 1px solid var(--purple);
-      font-size: 10px;
+      color: #190c23;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+
+    .story-stamp strong {
+      display: block;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 37px;
       font-weight: 900;
-      letter-spacing: 0.6px;
+      line-height: 0.9;
       text-transform: uppercase;
     }
 
-    .newsletter-form button:hover {
-      background: var(--purple-light);
-    }
-
-    .form-message {
-      min-height: 20px;
-      margin-top: 13px;
-      color: var(--purple-light);
-      font-size: 11px;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      padding-top: 55px;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.7fr 1fr 1fr;
-      gap: 45px;
-      padding-bottom: 45px;
-    }
-
-    .footer-description {
-      max-width: 340px;
-      margin-top: 15px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    .footer h4 {
-      margin-bottom: 18px;
-      font-size: 10px;
+    .story-stamp span {
+      display: block;
+      margin-top: 7px;
+      font-size: 8px;
       font-weight: 900;
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
+    .story-copy .section-heading {
+      margin-bottom: 22px;
     }
 
-    .footer-links a {
+    .story-copy p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.95;
+    }
+
+    .story-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .story-point {
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+    }
+
+    .story-point strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--purple-light);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    .story-point span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Newsletter */
+
+    .newsletter {
+      padding: 0 0 100px;
+    }
+
+    .newsletter-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      overflow: hidden;
+      padding: 55px;
+      border: 1px solid rgba(217, 179, 255, 0.3);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(189, 120, 255, 0.19), transparent 32%),
+        linear-gradient(120deg, #241330, #180d22);
+    }
+
+    .newsletter-copy {
+      max-width: 530px;
+    }
+
+    .newsletter-copy h2 {
+      margin: 12px 0;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 900;
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .newsletter-copy p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      width: min(420px, 100%);
+      gap: 8px;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      padding: 0 15px;
+      border: 1px solid rgba(217, 179, 255, 0.3);
+      border-radius: 6px;
+      background: rgba(16, 9, 22, 0.65);
+      color: var(--white);
+      font-size: 12px;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #a898b3;
+    }
+
+    .newsletter-message {
+      margin-top: 10px;
+      color: var(--purple-light);
+      font-size: 11px;
+    }
+
+    /* Footer */
+
+    .footer {
+      border-top: 1px solid var(--border);
+      background: #0c0611;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 45px;
+      padding: 65px 0 50px;
+    }
+
+    .footer-brand p {
+      max-width: 270px;
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 17px;
+      color: var(--purple-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+      width: fit-content;
+      margin: 10px 0;
       color: var(--muted);
       font-size: 12px;
       transition: color var(--transition);
     }
 
-    .footer-links a:hover {
+    .footer-column a:hover {
       color: var(--purple-light);
     }
 
     .footer-bottom {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding-block: 20px;
+      gap: 20px;
+      padding: 20px 0;
       border-top: 1px solid var(--border);
-      color: var(--muted);
+      color: #9988a5;
       font-size: 10px;
     }
 
-    /* WHATSAPP FLOATING BUTTON */
+    .footer-bottom strong {
+      color: var(--purple-light);
+    }
+
+    /* WhatsApp floating button */
 
     .whatsapp-float {
       position: fixed;
-      z-index: 90;
       right: 22px;
       bottom: 22px;
-      display: flex;
+      z-index: 80;
+      display: inline-flex;
+      min-height: 52px;
       align-items: center;
       justify-content: center;
-      width: 54px;
-      height: 54px;
-      background: #25D366;
-      color: #07180D;
-      border: none;
-      border-radius: 50%;
-      font-size: 23px;
+      gap: 10px;
+      padding: 0 18px;
+      border: 1px solid rgba(217, 179, 255, 0.45);
+      border-radius: 999px;
+      background: var(--purple);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      color: #190c23;
+      font-size: 11px;
       font-weight: 900;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
-      transition: transform var(--transition);
+      transition: transform var(--transition), background var(--transition);
     }
 
     .whatsapp-float:hover {
       transform: translateY(-4px);
+      background: var(--purple-light);
     }
 
-    /* RESPONSIVE */
-
-    @media (min-width: 1500px) {
-      .hero h1 {
-        font-size: 140px;
-      }
+    .whatsapp-icon {
+      font-size: 19px;
     }
+
+    /* Reveal animation */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
 
     @media (max-width: 1000px) {
-      .nav {
-        gap: 18px;
-      }
-
       .nav-links {
         gap: 17px;
       }
@@ -858,238 +988,248 @@
         font-size: 10px;
       }
 
-      .hero {
-        gap: 25px;
+      .nav-cta {
+        padding: 0 14px;
       }
 
-      .hero-visual {
-        min-height: 440px;
-      }
-
-      .category-image {
-        height: 290px;
-      }
-
-      .products {
+      .product-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 30px 20px;
+        gap: 20px;
+      }
+
+      .story-grid {
+        gap: 40px;
+      }
+
+      .newsletter-box {
+        padding: 38px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1.4fr 1fr 1fr;
       }
     }
 
-    @media (max-width: 720px) {
-      html {
-        scroll-padding-top: 80px;
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 32px, var(--max-width));
+      }
+
+      .section {
+        padding: 72px 0;
       }
 
       .announcement {
         font-size: 9px;
-        letter-spacing: 1.3px;
+        letter-spacing: 1px;
       }
 
       .nav {
         min-height: 68px;
-        flex-wrap: wrap;
-        gap: 12px;
-        padding-block: 10px;
-      }
-
-      .logo {
-        font-size: 24px;
-      }
-
-      .nav-actions {
-        margin-left: auto;
-      }
-
-      .nav-actions > .button {
-        min-height: 40px;
-        padding: 10px 12px;
-        font-size: 9px;
       }
 
       .menu-toggle {
-        display: flex;
+        display: inline-flex;
+      }
+
+      .nav-cta {
+        display: none;
       }
 
       .nav-links {
-        display: none;
-        order: 3;
-        width: 100%;
-        align-items: stretch;
+        position: fixed;
+        top: 68px;
+        right: 0;
+        left: 0;
+        display: flex;
+        max-height: calc(100dvh - 68px);
         flex-direction: column;
+        align-items: stretch;
         gap: 0;
-        padding-block: 10px;
-        border-top: 1px solid var(--border);
+        overflow-y: auto;
+        padding: 15px 24px 25px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(16, 9, 22, 0.98);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity var(--transition), transform var(--transition);
       }
 
       .nav-links.open {
-        display: flex;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
       }
 
       .nav-links a {
-        padding: 12px 4px;
-        font-size: 12px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        padding-block: 52px;
-      }
-
-      .hero h1 {
-        font-size: clamp(76px, 17vw, 115px);
-      }
-
-      .hero-description {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
         font-size: 13px;
       }
 
-      .hero-visual {
-        min-height: 410px;
+      .nav-links a:last-child {
+        border-bottom: 0;
       }
 
-      .ticker-track {
-        gap: 10px 15px;
-        padding-block: 15px;
+      .hero {
+        min-height: 610px;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(90deg, rgba(16, 9, 22, 0.92), rgba(16, 9, 22, 0.52)),
+          linear-gradient(0deg, rgba(16, 9, 22, 0.85), transparent 70%),
+          url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=85")
+          center / cover;
+      }
+
+      .hero-content {
+        padding: 90px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(66px, 15vw, 100px);
+      }
+
+      .hero-copy {
+        font-size: 13px;
+      }
+
+      .hero-meta {
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .hero-meta span {
         font-size: 9px;
       }
 
-      .section {
-        padding-block: 60px;
-      }
-
-      .section-header {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 14px;
-        margin-bottom: 25px;
-      }
-
-      .section-header h2,
-      .promo h2,
-      .newsletter h2 {
-        font-size: 49px;
-      }
-
-      .categories {
+      .categories-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
       }
 
-      .category-image {
-        height: 340px;
+      .category-card {
+        min-height: 340px;
       }
 
-      .products {
-        gap: 26px 12px;
+      .collection-top {
+        display: block;
+      }
+
+      .collection-top .section-heading {
+        margin-bottom: 24px;
+      }
+
+      .product-grid {
+        gap: 12px;
+      }
+
+      .product-info {
+        padding: 13px;
       }
 
       .product-info h3 {
         font-size: 12px;
       }
 
-      .product-description {
-        font-size: 10px;
-      }
-
-      .price {
-        font-size: 15px;
-      }
-
       .product-bottom {
         align-items: flex-start;
         flex-direction: column;
-        gap: 4px;
       }
 
-      .buy-button {
-        min-height: 42px;
-        padding: 9px 5px;
-        font-size: 9px;
+      .product-button {
+        width: 100%;
       }
 
-      .promo-content {
+      .story-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
-        padding-block: 60px;
+        gap: 45px;
       }
 
-      .promo-description {
-        font-size: 12px;
+      .story-visual {
+        min-height: 390px;
+      }
+
+      .story-image {
+        inset: 0 25px 25px 0;
+      }
+
+      .story-stamp {
+        width: 125px;
+        height: 125px;
+      }
+
+      .story-stamp strong {
+        font-size: 30px;
       }
 
       .newsletter {
-        padding-block: 55px;
+        padding-bottom: 72px;
       }
 
       .newsletter-box {
-        padding: 42px 18px;
+        align-items: stretch;
+        flex-direction: column;
+        padding: 30px 22px;
       }
 
       .newsletter-form {
         flex-direction: column;
       }
 
-      .newsletter-form button {
+      .newsletter-form .button {
         width: 100%;
       }
 
-      .footer-grid {
+      .footer-main {
         grid-template-columns: 1fr 1fr;
-        gap: 35px 20px;
+        gap: 35px 22px;
+        padding: 48px 0 35px;
       }
 
-      .footer-grid > div:first-child {
+      .footer-brand {
         grid-column: 1 / -1;
       }
 
       .footer-bottom {
+        align-items: flex-start;
         flex-direction: column;
+        gap: 8px;
       }
 
       .whatsapp-float {
-        right: 15px;
-        bottom: 15px;
-        width: 49px;
-        height: 49px;
+        right: 14px;
+        bottom: 14px;
+        min-height: 48px;
+        padding: 0 15px;
       }
     }
 
-    @media (max-width: 380px) {
-      .container {
-        width: 93%;
+    @media (max-width: 390px) {
+      .logo-name {
+        font-size: 23px;
       }
 
-      .logo {
-        font-size: 21px;
+      .logo-mark {
+        width: 36px;
+        height: 36px;
       }
 
-      .nav-actions {
-        gap: 6px;
+      .product-grid {
+        grid-template-columns: 1fr;
       }
 
-      .nav-actions > .button {
-        padding-inline: 9px;
+      .product-image {
+        aspect-ratio: 4 / 3.5;
       }
 
-      .hero h1 {
-        font-size: 72px;
+      .hero-actions .button {
+        width: 100%;
       }
 
-      .hero-visual {
-        min-height: 330px;
-      }
-
-      .category-image {
-        height: 280px;
-      }
-
-      .product-tag {
-        top: 7px;
-        left: 7px;
-        padding: 6px;
-        font-size: 8px;
+      .story-points {
+        gap: 14px;
       }
     }
 
@@ -1099,675 +1239,482 @@
       *::after {
         scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
 </head>
 
 <body>
-
+  <!-- Announcement bar -->
   <div class="announcement">
-    SAUCESTREET® — STREETWEAR CULTURE — OWN YOUR STYLE
+    Streetwear with attitude — Find your style. Own your energy.
   </div>
 
+  <!-- Header -->
   <header class="header">
     <div class="container nav">
-
-      <a href="#inicio" class="logo" aria-label="SauceStreet, inicio">
-        SauceStreet<span>®</span>
+      <a class="logo" href="#inicio" aria-label="SauceStreet home">
+        <span class="logo-mark">SS</span>
+        <span>
+          <span class="logo-name">SAUCE<span>STREET</span>®</span>
+          <span class="logo-tagline">Streetwear & Football Culture</span>
+        </span>
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#categorias">Categorías</a>
-        <a href="#productos">Productos</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#inicio">Home</a>
+        <a href="#categorias">Categories</a>
+        <a href="#productos">Collection</a>
+        <a href="#nosotros">Our Story</a>
+        <a href="#contacto">Contact</a>
       </nav>
 
-      <div class="nav-actions">
-        <a href="#productos" class="button button-primary">
-          Shop now ↗
-        </a>
+      <a class="nav-cta" href="#productos">Shop the Drop ↗</a>
 
-        <button
-          class="menu-toggle"
-          id="menuButton"
-          type="button"
-          aria-label="Abrir menú"
-          aria-controls="navLinks"
-          aria-expanded="false">
-          ☰
-        </button>
-      </div>
-
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="navLinks"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
     </div>
   </header>
 
   <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-label">
+            <span></span>
+            Independent Streetwear
+          </div>
 
-    <!-- HERO -->
+          <h1>
+            Wear Your
+            <span class="line-purple">Attitude.</span>
+          </h1>
 
-    <section class="container hero" id="inicio">
+          <p class="hero-copy">
+            More than clothes. It's a statement. Discover streetwear,
+            oversized essentials and football-inspired pieces made for
+            those who create their own rules.
+          </p>
 
-      <div class="hero-content">
+          <div class="hero-actions">
+            <a class="button" href="#productos">Explore Collection ↗</a>
+            <a class="button button-outline" href="#categorias">Discover Your Style</a>
+          </div>
 
-        <div class="eyebrow">Streetwear & Football Culture</div>
-
-        <h1>
-          OWN YOUR
-          <span>STYLE.</span>
-        </h1>
-
-        <p class="hero-description">
-          No sigas tendencias. Crea tu propia identidad.
-          Descubre una colección inspirada en el streetwear,
-          la cultura urbana y la pasión por el fútbol.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#productos" class="button button-primary">
-            Comprar ahora ↗
-          </a>
-
-          <a href="#categorias" class="button">
-            Ver colección
-          </a>
+          <div class="hero-meta">
+            <span>Streetwear Essentials</span>
+            <span>Football Culture</span>
+            <span>Made for Your Style</span>
+          </div>
         </div>
-
-        <p class="hero-note">
-          Streetwear <span>✦</span>
-          Football <span>✦</span>
-          Your identity
-        </p>
-
       </div>
-
-      <div class="hero-visual">
-
-        <img
-          src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1100&q=85"
-          alt="Inspiración de moda streetwear"
-          fetchpriority="high">
-
-        <div class="hero-watermark" aria-hidden="true">
-          SAUCE
-        </div>
-
-        <div class="hero-index">001 / SS26</div>
-
-        <div class="hero-badge">
-          SauceStreet® — New era
-        </div>
-
-      </div>
-
     </section>
 
-    <!-- BRAND TICKER -->
-
-    <div class="ticker" aria-label="Estilo SauceStreet">
+    <!-- Moving text -->
+    <div class="ticker" aria-label="SauceStreet brand message">
       <div class="ticker-track">
-        STREET CULTURE <span>✦</span>
-        FOOTBALL JERSEYS <span>✦</span>
-        OVERSIZED FITS <span>✦</span>
-        OWN YOUR STYLE
+        <div class="ticker-group" aria-hidden="true">
+          <span class="ticker-item">No Rules</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">Just Style</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">Street Culture</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">Own Your Energy</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">SauceStreet®</span>
+          <span class="ticker-star">✳</span>
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+          <span class="ticker-item">No Rules</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">Just Style</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">Street Culture</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">Own Your Energy</span>
+          <span class="ticker-star">✳</span>
+          <span class="ticker-item">SauceStreet®</span>
+          <span class="ticker-star">✳</span>
+        </div>
       </div>
     </div>
 
-    <!-- CATEGORIES -->
-
+    <!-- Categories -->
     <section class="section" id="categorias">
-
       <div class="container">
-
-        <div class="section-header">
-
-          <div>
-            <div class="eyebrow">Encuentra tu estilo</div>
-            <h2>Shop by category</h2>
-          </div>
-
-          <p class="section-description">
-            Piezas inspiradas en la cultura urbana para quienes
-            hacen de su estilo una forma de expresión.
+        <div class="section-heading reveal">
+          <span class="eyebrow">Find Your Fit</span>
+          <h2>Built Around <span class="accent">Your Style.</span></h2>
+          <p>
+            From everyday essentials to football-inspired looks,
+            find the pieces that speak your language.
           </p>
-
         </div>
 
-        <div class="categories">
+        <div class="categories-grid">
+          <a class="category-card category-tees reveal" href="#productos">
+            <div class="category-content">
+              <span class="category-number">01 / EVERYDAY ESSENTIALS</span>
+              <h3>Oversized Tees</h3>
+              <p>Relaxed fit. Maximum attitude.</p>
+              <span class="text-link">Explore Tees ↗</span>
+            </div>
+          </a>
 
-          <a class="category" href="#productos" aria-label="Explorar franelas oversize">
+          <a class="category-card category-caps reveal" href="#productos">
+            <div class="category-content">
+              <span class="category-number">02 / FINISH THE LOOK</span>
+              <h3>Caps & Accessories</h3>
+              <p>The details make the difference.</p>
+              <span class="text-link">Explore Accessories ↗</span>
+            </div>
+          </a>
 
-            <div class="category-image">
+          <a class="category-card category-football reveal" href="#productos">
+            <div class="category-content">
+              <span class="category-number">03 / FOOTBALL CULTURE</span>
+              <h3>Jerseys</h3>
+              <p>For the love of the game.</p>
+              <span class="text-link">Explore Jerseys ↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured collection -->
+    <section class="section collection" id="productos">
+      <div class="container">
+        <div class="collection-top">
+          <div class="section-heading reveal">
+            <span class="eyebrow">The SauceStreet Edit</span>
+            <h2>Featured <span class="accent">Pieces.</span></h2>
+            <p>
+              Your next go-to pieces start here. Choose your favorite
+              and contact us to ask about availability.
+            </p>
+          </div>
+
+          <a class="button button-outline" href="#contacto">Ask About Products ↗</a>
+        </div>
+
+        <div class="product-grid">
+          <!-- Product 1 -->
+          <article class="product-card reveal">
+            <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"
-                alt="Franelas para un estilo urbano"
-                loading="lazy">
+                alt="Minimal oversized style T-shirt"
+                loading="lazy"
+              >
+              <span class="product-tag">Essential</span>
             </div>
-
-            <div class="category-info">
-              <span class="category-number">01 / APPAREL</span>
-              <h3>Oversized Tees</h3>
-              <span class="category-link">
-                Explorar colección <span>↗</span>
-              </span>
+            <div class="product-info">
+              <span class="product-category">Streetwear / Tops</span>
+              <h3>Oversized Essential Tee</h3>
+              <div class="product-bottom">
+                <span class="product-price">12 USDT</span>
+                <button
+                  class="product-button"
+                  type="button"
+                  data-product="Oversized Essential Tee"
+                >
+                  Inquire ↗
+                </button>
+              </div>
             </div>
+          </article>
 
-          </a>
-
-          <a class="category" href="#productos" aria-label="Explorar gorras">
-
-            <div class="category-image">
+          <!-- Product 2 -->
+          <article class="product-card reveal">
+            <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85"
-                alt="Gorras para completar tu outfit"
-                loading="lazy">
+                alt="Streetwear baseball cap"
+                loading="lazy"
+              >
+              <span class="product-tag">Everyday</span>
             </div>
-
-            <div class="category-info">
-              <span class="category-number">02 / ACCESSORIES</span>
-              <h3>Caps & Hats</h3>
-              <span class="category-link">
-                Explorar colección <span>↗</span>
-              </span>
+            <div class="product-info">
+              <span class="product-category">Accessories / Caps</span>
+              <h3>Urban Classic Cap</h3>
+              <div class="product-bottom">
+                <span class="product-price">9 USDT</span>
+                <button
+                  class="product-button"
+                  type="button"
+                  data-product="Urban Classic Cap"
+                >
+                  Inquire ↗
+                </button>
+              </div>
             </div>
+          </article>
 
-          </a>
-
-          <a class="category" href="#productos" aria-label="Explorar jerseys de fútbol">
-
-            <div class="category-image">
+          <!-- Product 3 -->
+          <article class="product-card reveal">
+            <div class="product-image">
               <img
                 src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=85"
-                alt="Cultura futbolística y jerseys"
-                loading="lazy">
+                alt="Football-inspired sportswear"
+                loading="lazy"
+              >
+              <span class="product-tag">Football</span>
             </div>
-
-            <div class="category-info">
-              <span class="category-number">03 / FOOTBALL</span>
-              <h3>Football Jerseys</h3>
-              <span class="category-link">
-                Explorar colección <span>↗</span>
-              </span>
+            <div class="product-info">
+              <span class="product-category">Football / Jerseys</span>
+              <h3>Football Culture Jersey</h3>
+              <div class="product-bottom">
+                <span class="product-price">18 USDT</span>
+                <button
+                  class="product-button"
+                  type="button"
+                  data-product="Football Culture Jersey"
+                >
+                  Inquire ↗
+                </button>
+              </div>
             </div>
+          </article>
 
-          </a>
-
+          <!-- Product 4 -->
+          <article class="product-card reveal">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=800&q=85"
+                alt="Urban streetwear outfit"
+                loading="lazy"
+              >
+              <span class="product-tag">Street Edit</span>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Streetwear / Collection</span>
+              <h3>Streetwear Collection</h3>
+              <div class="product-bottom">
+                <span class="product-price">15 USDT</span>
+                <button
+                  class="product-button"
+                  type="button"
+                  data-product="Streetwear Collection"
+                >
+                  Inquire ↗
+                </button>
+              </div>
+            </div>
+          </article>
         </div>
 
+        <p class="collection-note">
+          Product images are illustrative. Prices are sample prices and must be confirmed before publishing.
+        </p>
       </div>
-
     </section>
 
-    <!-- PRODUCTS -->
+    <!-- Our story -->
+    <section class="section" id="nosotros">
+      <div class="container story-grid">
+        <div class="story-visual reveal">
+          <div class="story-image">
+            <img
+              src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
+              alt="Streetwear-inspired fashion editorial"
+              loading="lazy"
+            >
+          </div>
+          <div class="story-stamp" aria-label="Style without limits">
+            <div>
+              <strong>Own<br>Your<br>Style.</strong>
+              <span>SauceStreet®</span>
+            </div>
+          </div>
+        </div>
 
-    <section class="section products-section" id="productos">
+        <div class="story-copy reveal">
+          <div class="section-heading">
+            <span class="eyebrow">Our Identity</span>
+            <h2>Not Made to <span class="accent">Blend In.</span></h2>
+          </div>
 
+          <p>
+            SauceStreet is about self-expression, street culture and
+            the confidence to wear what feels like you.
+          </p>
+
+          <p>
+            Inspired by urban fashion and football culture, our style
+            brings together bold energy, everyday comfort and pieces
+            that help you create your own look.
+          </p>
+
+          <div class="story-points">
+            <div class="story-point">
+              <strong>Street First</strong>
+              <span>Inspired by urban culture.</span>
+            </div>
+            <div class="story-point">
+              <strong>Your Rules</strong>
+              <span>Style is personal. Own it.</span>
+            </div>
+            <div class="story-point">
+              <strong>Everyday Fit</strong>
+              <span>Looks for your daily rotation.</span>
+            </div>
+            <div class="story-point">
+              <strong>Football DNA</strong>
+              <span>Made for the culture around the game.</span>
+            </div>
+          </div>
+
+          <a class="button" href="#productos">Find Your Look ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter / contact -->
+    <section class="newsletter" id="contacto">
       <div class="container">
-
-        <div class="section-header">
+        <div class="newsletter-box reveal">
+          <div class="newsletter-copy">
+            <span class="eyebrow">Stay Connected</span>
+            <h2>Get in the <span class="accent">Loop.</span></h2>
+            <p>
+              Want to know about products, sizes or availability?
+              Contact us directly and let's find your next favorite piece.
+            </p>
+          </div>
 
           <div>
-            <div class="eyebrow">Descubre SauceStreet</div>
-            <h2>Latest drops</h2>
+            <form class="newsletter-form" id="contactForm">
+              <input
+                type="email"
+                id="emailInput"
+                name="email"
+                placeholder="Your email address"
+                aria-label="Your email address"
+                autocomplete="email"
+                required
+              >
+              <button class="button" type="submit">Contact Us ↗</button>
+            </form>
+            <p class="newsletter-message" id="newsletterMessage" role="status">
+              This form opens WhatsApp with your message; it does not subscribe you to an email list.
+            </p>
           </div>
-
-          <p class="section-description">
-            Explora nuestra selección de prendas y accesorios.
-            Consulta disponibilidad y detalles directamente por WhatsApp.
-          </p>
-
         </div>
-
-        <div class="products">
-
-          <!-- PRODUCT 1 -->
-
-          <article class="product">
-
-            <div class="product-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=650&q=85"
-                alt="Oversized Essential Tee"
-                loading="lazy">
-
-              <span class="product-tag">Best seller</span>
-
-            </div>
-
-            <div class="product-info">
-
-              <span class="product-category">Streetwear / Unisex</span>
-
-              <h3>Oversized Essential Tee</h3>
-
-              <p class="product-description">
-                Un básico para tu outfit diario.
-              </p>
-
-              <div class="product-bottom">
-                <div class="price">12 <small>USDT</small></div>
-              </div>
-
-              <button
-                class="buy-button"
-                type="button"
-                data-product="Oversized Essential Tee"
-                data-price="12">
-                Consultar producto ↗
-              </button>
-
-            </div>
-
-          </article>
-
-          <!-- PRODUCT 2 -->
-
-          <article class="product">
-
-            <div class="product-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=650&q=85"
-                alt="Urban Classic Cap"
-                loading="lazy">
-
-              <span class="product-tag">New drop</span>
-
-            </div>
-
-            <div class="product-info">
-
-              <span class="product-category">Accessories / Unisex</span>
-
-              <h3>Urban Classic Cap</h3>
-
-              <p class="product-description">
-                El detalle que completa tu estilo.
-              </p>
-
-              <div class="product-bottom">
-                <div class="price">9 <small>USDT</small></div>
-              </div>
-
-              <button
-                class="buy-button"
-                type="button"
-                data-product="Urban Classic Cap"
-                data-price="9">
-                Consultar producto ↗
-              </button>
-
-            </div>
-
-          </article>
-
-          <!-- PRODUCT 3 -->
-
-          <article class="product">
-
-            <div class="product-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=650&q=85"
-                alt="Football Culture Jersey"
-                loading="lazy">
-
-              <span class="product-tag">Football</span>
-
-            </div>
-
-            <div class="product-info">
-
-              <span class="product-category">Football / Fan style</span>
-
-              <h3>Football Culture Jersey</h3>
-
-              <p class="product-description">
-                Fútbol, identidad y cultura urbana.
-              </p>
-
-              <div class="product-bottom">
-                <div class="price">18 <small>USDT</small></div>
-              </div>
-
-              <button
-                class="buy-button"
-                type="button"
-                data-product="Football Culture Jersey"
-                data-price="18">
-                Consultar producto ↗
-              </button>
-
-            </div>
-
-          </article>
-
-          <!-- PRODUCT 4 -->
-
-          <article class="product">
-
-            <div class="product-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=650&q=85"
-                alt="Streetwear Collection"
-                loading="lazy">
-
-              <span class="product-tag">Collection</span>
-
-            </div>
-
-            <div class="product-info">
-
-              <span class="product-category">Urban / Unisex</span>
-
-              <h3>Streetwear Collection</h3>
-
-              <p class="product-description">
-                Encuentra piezas para tu propio estilo.
-              </p>
-
-              <div class="product-bottom">
-                <div class="price">15 <small>USDT</small></div>
-              </div>
-
-              <button
-                class="buy-button"
-                type="button"
-                data-product="Streetwear Collection"
-                data-price="15">
-                Consultar producto ↗
-              </button>
-
-            </div>
-
-          </article>
-
-        </div>
-
       </div>
-
     </section>
-
-    <!-- ABOUT THE BRAND -->
-
-    <section class="promo" id="nosotros">
-
-      <div class="container promo-content">
-
-        <div>
-
-          <div class="eyebrow">Más que ropa</div>
-
-          <h2>
-            Wear your
-            <br>
-            <span>identity.</span>
-          </h2>
-
-          <p class="promo-description">
-            SauceStreet nace de la cultura urbana, la pasión por
-            el fútbol y la libertad de vestir a tu manera.
-
-            <br><br>
-
-            Creemos que el estilo no consiste en seguir lo que
-            todos hacen, sino en encontrar lo que te representa.
-            Cada outfit es una forma de expresarte. Cada detalle
-            habla de quién eres.
-
-            <br><br>
-
-            No se trata solamente de lo que llevas puesto,
-            sino de cómo lo representas.
-          </p>
-
-        </div>
-
-        <div class="promo-side">
-
-          <div class="promo-stat">
-            <strong>Your style.</strong>
-            <span>Tu identidad, tus reglas.</span>
-          </div>
-
-          <div class="promo-stat">
-            <strong>Your culture.</strong>
-            <span>Streetwear y fútbol en una sola vibra.</span>
-          </div>
-
-          <div class="promo-stat">
-            <strong>Your sauce.</strong>
-            <span>Lo que te hace diferente.</span>
-          </div>
-
-          <a href="#productos" class="button button-primary">
-            Descubre SauceStreet ↗
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- NEWSLETTER -->
-
-    <section class="newsletter">
-
-      <div class="container">
-
-        <div class="newsletter-box">
-
-          <div class="eyebrow">Join the movement</div>
-
-          <h2>Stay in the loop.</h2>
-
-          <p class="newsletter-description">
-            ¿Quieres conocer los próximos lanzamientos y novedades?
-            Déjanos tu correo para consultar cómo recibir información
-            de SauceStreet.
-          </p>
-
-          <form class="newsletter-form" id="newsletterForm">
-
-            <input
-              type="email"
-              id="newsletterEmail"
-              name="email"
-              placeholder="Tu correo electrónico"
-              aria-label="Tu correo electrónico"
-              autocomplete="email"
-              required>
-
-            <button type="submit">
-              Quiero saber más ↗
-            </button>
-
-          </form>
-
-          <p
-            class="form-message"
-            id="newsletterMessage"
-            aria-live="polite">
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
   </main>
 
-  <!-- FOOTER -->
-
-  <footer class="footer" id="contacto">
-
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-
-          <a href="#inicio" class="logo">
-            SauceStreet<span>®</span>
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="logo" href="#inicio">
+            <span class="logo-mark">SS</span>
+            <span>
+              <span class="logo-name">SAUCE<span>STREET</span>®</span>
+              <span class="logo-tagline">Streetwear & Football Culture</span>
+            </span>
           </a>
 
-          <p class="footer-description">
-            Streetwear, fútbol y cultura urbana.
-            Viste diferente. Encuentra tu estilo.
-            Own your identity.
+          <p>
+            Streetwear with attitude. Built around self-expression,
+            urban culture and the freedom to create your own style.
           </p>
-
         </div>
 
-        <div>
-
-          <h4>Explorar</h4>
-
-          <div class="footer-links">
-            <a href="#inicio">Inicio</a>
-            <a href="#categorias">Categorías</a>
-            <a href="#productos">Productos</a>
-            <a href="#nosotros">Nosotros</a>
-          </div>
-
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <a href="#inicio">Home</a>
+          <a href="#categorias">Categories</a>
+          <a href="#productos">Collection</a>
+          <a href="#nosotros">Our Story</a>
         </div>
 
-        <div>
-
-          <h4>Conecta con nosotros</h4>
-
-          <div class="footer-links">
-
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer">
-              Instagram ↗
-            </a>
-
-            <a
-              href="#contacto"
-              id="footerWhatsapp">
-              WhatsApp ↗
-            </a>
-
-          </div>
-
+        <div class="footer-column">
+          <h3>Collections</h3>
+          <a href="#productos">Oversized Tees</a>
+          <a href="#productos">Caps & Accessories</a>
+          <a href="#productos">Football Jerseys</a>
         </div>
 
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <a href="#" id="footerWhatsapp">WhatsApp</a>
+          <a href="#" id="footerInstagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="#contacto">Contact Us</a>
+        </div>
       </div>
 
       <div class="footer-bottom">
-
-        <span>
-          © <span id="currentYear">2026</span> SauceStreet®.
-          Todos los derechos reservados.
-        </span>
-
-        <span>
-          PRECIOS EN USDT · STREETWEAR & FOOTBALL CULTURE
-        </span>
-
+        <span>© <span id="year"></span> <strong>SauceStreet®</strong>. All rights reserved.</span>
+        <span>Streetwear & Football Culture.</span>
       </div>
-
     </div>
-
   </footer>
 
-  <!-- FLOATING WHATSAPP -->
-
+  <!-- Floating WhatsApp -->
   <a
-    href="#contacto"
     class="whatsapp-float"
+    href="#contacto"
     id="floatingWhatsapp"
-    aria-label="Contactar a SauceStreet por WhatsApp"
-    title="Contactar por WhatsApp">
-    W
+    aria-label="Contact SauceStreet on WhatsApp"
+  >
+    <span class="whatsapp-icon" aria-hidden="true">↗</span>
+    <span>Let's Talk</span>
   </a>
 
   <script>
     /*
-    ==========================================================
-    SAUCESTREET CONFIGURATION
-    ==========================================================
+      SAUCESTREET CONFIGURATION
 
-    1. Add your WhatsApp number using the international format.
-       Example for Costa Rica: 50688887777
-       Use numbers only, without +, spaces or dashes.
+      1. Replace whatsappNumber with your full country code + number.
+         Use digits only, without +, spaces or dashes.
+         Example format for Costa Rica: 506XXXXXXXX
 
-    2. Replace the Instagram URL with your real profile.
+      2. Replace instagramUrl with your real Instagram profile.
 
-    3. Product prices are examples. Update them before selling.
-
-    ==========================================================
+      3. Update product names, prices, descriptions and photos
+         before making the store public.
     */
 
     const CONFIG = {
       whatsappNumber: "TU_NUMERO_DE_WHATSAPP",
-      instagramUrl: "https://www.instagram.com/",
-      currency: "USDT"
+      instagramUrl: "https://www.instagram.com/"
     };
 
-
-    // MOBILE NAVIGATION
-
-    const menuButton = document.getElementById("menuButton");
-    const navLinks = document.getElementById("navLinks");
-
-    function closeMenu() {
-      navLinks.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Abrir menú");
-      menuButton.textContent = "☰";
-      document.body.classList.remove("menu-open");
-    }
-
-    menuButton.addEventListener("click", function () {
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute(
-        "aria-label",
-        isOpen ? "Cerrar menú" : "Abrir menú"
-      );
-
-      menuButton.textContent = isOpen ? "✕" : "☰";
-
-      document.body.classList.toggle("menu-open", isOpen);
-    });
-
-    navLinks.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", closeMenu);
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-
-    // WHATSAPP
-
+    // WhatsApp helpers
     function isWhatsAppConfigured() {
-      return /^[0-9]{8,15}$/.test(CONFIG.whatsappNumber);
+      return (
+        CONFIG.whatsappNumber &&
+        /^\d+$/.test(CONFIG.whatsappNumber) &&
+        CONFIG.whatsappNumber !== "TU_NUMERO_DE_WHATSAPP"
+      );
     }
 
     function openWhatsApp(message) {
       if (!isWhatsAppConfigured()) {
         alert(
-          "WhatsApp todavía no está configurado. " +
-          "Agrega el número de contacto de SauceStreet " +
-          "en la sección CONFIGURATION del código."
+          "WhatsApp is not configured yet. Open the HTML file and replace TU_NUMERO_DE_WHATSAPP with your number, including the country code."
         );
-
         return;
       }
 
@@ -1780,119 +1727,118 @@
       window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    function buyProduct(name, price) {
-      const message =
-        "Hola, me interesa este producto de SauceStreet:\n\n" +
-        "Producto: " + name + "\n" +
-        "Precio de referencia: " + price + " " + CONFIG.currency + "\n\n" +
-        "¿Me pueden confirmar disponibilidad, tallas y detalles de compra?";
+    // Product inquiry buttons
+    document.querySelectorAll("[data-product]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const productName = button.dataset.product;
 
-      openWhatsApp(message);
-    }
-
-    document.querySelectorAll(".buy-button").forEach(function (button) {
-      button.addEventListener("click", function () {
-        const name = button.dataset.product;
-        const price = Number(button.dataset.price);
-
-        if (!name || !Number.isFinite(price) || price < 0) {
-          alert("No se pudo identificar el producto. Inténtalo nuevamente.");
-          return;
-        }
-
-        buyProduct(name, price);
+        openWhatsApp(
+          `Hello SauceStreet! I'm interested in the ${productName}. Could you please share more details about availability, sizes and payment options?`
+        );
       });
     });
 
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-    // WHATSAPP LINKS
+    function closeMenu() {
+      navLinks.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      menuToggle.textContent = "☰";
+    }
 
-    const floatingWhatsapp = document.getElementById("floatingWhatsapp");
-    const footerWhatsapp = document.getElementById("footerWhatsapp");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
 
-    function configureWhatsAppLink(element, message) {
-      if (isWhatsAppConfigured()) {
-        element.href =
-          "https://wa.me/" +
-          CONFIG.whatsappNumber +
-          "?text=" +
-          encodeURIComponent(message);
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
 
-        element.target = "_blank";
-        element.rel = "noopener noreferrer";
-      } else {
-        element.href = "#contacto";
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
 
-        element.addEventListener("click", function (event) {
-          event.preventDefault();
-
-          alert(
-            "Configura el número de WhatsApp de SauceStreet " +
-            "en la sección CONFIGURATION del código."
-          );
-        });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
       }
-    }
+    });
 
-    configureWhatsAppLink(
-      floatingWhatsapp,
-      "Hola, quisiera obtener más información sobre SauceStreet."
-    );
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) {
+        closeMenu();
+      }
+    });
 
-    configureWhatsAppLink(
-      footerWhatsapp,
-      "Hola, quisiera contactar a SauceStreet."
-    );
+    // Footer WhatsApp
+    document.getElementById("footerWhatsapp").addEventListener("click", (event) => {
+      event.preventDefault();
+      openWhatsApp("Hello SauceStreet! I'd like to know more about your collection.");
+    });
 
+    // Floating WhatsApp
+    document.getElementById("floatingWhatsapp").addEventListener("click", (event) => {
+      event.preventDefault();
+      openWhatsApp("Hello SauceStreet! I'd like to know more about your collection.");
+    });
 
-    // INSTAGRAM
+    // Instagram
+    const instagramLink = document.getElementById("footerInstagram");
+    instagramLink.href = CONFIG.instagramUrl;
 
-    const instagramLink = document.querySelector(
-      '.footer-links a[href="https://www.instagram.com/"]'
-    );
-
-    if (instagramLink) {
-      instagramLink.href = CONFIG.instagramUrl;
-    }
-
-
-    // NEWSLETTER
-
-    const newsletterForm = document.getElementById("newsletterForm");
-    const newsletterEmail = document.getElementById("newsletterEmail");
-    const newsletterMessage = document.getElementById("newsletterMessage");
-
-    newsletterForm.addEventListener("submit", function (event) {
+    // Contact form opens WhatsApp. No email is stored or submitted to a server.
+    document.getElementById("contactForm").addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const email = newsletterEmail.value.trim();
+      const emailInput = document.getElementById("emailInput");
+      const email = emailInput.value.trim();
 
-      if (!newsletterEmail.checkValidity() || !email) {
-        newsletterEmail.reportValidity();
+      if (!emailInput.checkValidity()) {
+        emailInput.reportValidity();
         return;
       }
 
-      /*
-      This static website does not store email addresses.
-      Connect a newsletter service or backend before collecting
-      and storing subscribers.
-      */
-
-      newsletterMessage.textContent =
-        "El formulario todavía no está conectado. " +
-        "Puedes contactarnos por WhatsApp para conocer las novedades.";
-
-      newsletterEmail.value = "";
+      openWhatsApp(
+        `Hello SauceStreet! I'd like to receive information about your products. My email is: ${email}`
+      );
     });
 
+    // Dynamic copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // CURRENT YEAR
+    // Reveal elements as they enter the viewport
+    const revealElements = document.querySelectorAll(".reveal");
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
 
+      revealElements.forEach((element) => {
+        revealObserver.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+    }
   </script>
-
 </body>
 </html>
-```
+
