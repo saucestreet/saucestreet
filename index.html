@@ -1,27 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#120D17">
-  <meta name="description" content="SauceStreet — Streetwear and football culture. Discover oversized tees, caps, and football jerseys.">
-  <title>SauceStreet | Streetwear & Football Culture</title>
+  <meta name="theme-color" content="#100916">
+  <meta name="description" content="SauceStreet® — Streetwear, oversized tees, caps and football culture. Find your style. Own your energy.">
+  <meta property="og:title" content="SauceStreet® | Streetwear & Football Culture">
+  <meta property="og:description" content="Streetwear with attitude. Discover the SauceStreet collection.">
+  <meta property="og:type" content="website">
+
+  <title>SauceStreet® | Streetwear & Football Culture</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #120D17;
-      --bg-secondary: #1B1422;
-      --card: #20182A;
-      --accent: #BC78FF;
-      --accent-hover: #D0A1FF;
-      --text: #FFFFFF;
-      --muted: #B9ADBF;
-      --border: rgba(188, 120, 255, 0.22);
+      --bg: #100916;
+      --bg-soft: #170e20;
+      --surface: #201329;
+      --surface-light: #2b1937;
+      --purple: #bd78ff;
+      --purple-light: #d9b3ff;
+      --purple-dark: #7438a8;
+      --white: #fbf7ff;
+      --muted: #b9a9c5;
+      --border: rgba(217, 179, 255, 0.16);
+      --max-width: 1240px;
       --radius: 18px;
-      --max-width: 1200px;
+      --transition: 220ms ease;
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -29,14 +43,24 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 95px;
     }
 
     body {
       background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
       line-height: 1.6;
-      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
     }
 
     a {
@@ -44,520 +68,211 @@
       text-decoration: none;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button,
-    input,
-    select {
+    button, input {
       font: inherit;
     }
 
-    button {
-      cursor: pointer;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--purple-light);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      background: var(--purple);
+      color: #160c20;
     }
 
     .container {
-      width: min(100% - 40px, var(--max-width));
+      width: min(var(--max-width), calc(100% - 48px));
       margin-inline: auto;
     }
 
-    .accent {
-      color: var(--accent);
-    }
-
-    .announcement {
-      padding: 9px 16px;
-      background: var(--accent);
-      color: #120D17;
-      text-align: center;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(18, 13, 23, 0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .language-toggle {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 5px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: var(--bg-secondary);
-    }
-
-    .language-toggle button {
-      border: 0;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--muted);
-      padding: 6px 9px;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .language-toggle button.active {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    .menu-toggle {
-      display: none;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg-secondary);
-      color: var(--text);
-      padding: 8px 11px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 20px;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--bg);
-      font-size: 13px;
-      font-weight: 900;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      background: var(--accent-hover);
-    }
-
-    .button-outline {
-      background: transparent;
-      color: var(--text);
-    }
-
-    .button-outline:hover {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 110px 0 100px;
-      background:
-        radial-gradient(ellipse at 80% 30%, rgba(188, 120, 255, 0.17), transparent 42%),
-        radial-gradient(ellipse at 10% 80%, rgba(188, 120, 255, 0.08), transparent 38%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 55px;
+    .section {
+      padding: 100px 0;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      color: var(--accent);
+      gap: 10px;
+      color: var(--purple-light);
       font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 2.5px;
+      font-weight: 800;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     .eyebrow::before {
       content: "";
-      display: inline-block;
-      width: 26px;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    .hero h1 {
-      max-width: 700px;
-      margin-bottom: 24px;
-      font-size: clamp(42px, 6vw, 76px);
-      line-height: 0.98;
-      font-weight: 900;
-      letter-spacing: -4px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: var(--accent);
-    }
-
-    .hero p {
-      max-width: 510px;
-      margin-bottom: 30px;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 430px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      background:
-        linear-gradient(145deg, rgba(188, 120, 255, 0.13), transparent 55%),
-        var(--bg-secondary);
-      overflow: hidden;
-    }
-
-    .hero-visual::before {
-      content: "SAUCE";
-      position: absolute;
-      font-size: clamp(65px, 10vw, 130px);
-      font-weight: 900;
-      letter-spacing: -8px;
-      color: rgba(188, 120, 255, 0.09);
-      transform: rotate(-90deg);
-    }
-
-    .hero-visual img {
-      position: relative;
-      z-index: 1;
-      width: 85%;
-      max-height: 400px;
-      object-fit: contain;
-      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.4));
-    }
-
-    .hero-tag {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      z-index: 2;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(18, 13, 23, 0.9);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    section {
-      padding: 85px 0;
+      width: 24px;
+      height: 1px;
+      background: var(--purple);
     }
 
     .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 25px;
-      margin-bottom: 35px;
+      max-width: 650px;
+      margin-bottom: 42px;
     }
 
     .section-heading h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      line-height: 1.1;
-      font-weight: 900;
-      letter-spacing: -1.8px;
+      margin-top: 13px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -1px;
       text-transform: uppercase;
     }
 
     .section-heading p {
-      max-width: 420px;
+      max-width: 540px;
+      margin-top: 16px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .accent {
+      color: var(--purple);
+    }
+
+    /* Announcement bar */
+
+    .announcement {
+      position: relative;
+      z-index: 20;
+      padding: 9px 16px;
+      background: var(--purple);
+      color: #180b22;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    /* Header and navigation */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(16, 9, 22, 0.94);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: space-between;
       gap: 22px;
     }
 
-    .product-card {
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+    .logo {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 10px;
     }
 
-    .product-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-    }
-
-    .product-image {
-      position: relative;
-      aspect-ratio: 4 / 4.6;
-      overflow: hidden;
-      background: var(--bg-secondary);
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .product-card:hover .product-image img {
-      transform: scale(1.05);
-    }
-
-    .product-label {
-      position: absolute;
-      top: 13px;
-      left: 13px;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--bg);
-      font-size: 10px;
+    .logo-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(217, 179, 255, 0.55);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #382044, #170d21);
+      box-shadow: 0 0 24px rgba(189, 120, 255, 0.13);
+      color: var(--purple-light);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 21px;
       font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
     }
 
-    .product-info {
-      padding: 18px;
+    .logo-name {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.5px;
     }
 
-    .product-category {
-      margin-bottom: 5px;
-      color: var(--accent);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
+    .logo-name span {
+      color: var(--purple);
     }
 
-    .product-info h3 {
-      margin-bottom: 8px;
-      font-size: 16px;
-      line-height: 1.3;
-      font-weight: 800;
-    }
-
-    .product-description {
-      min-height: 42px;
-      margin-bottom: 16px;
+    .logo-tagline {
+      display: block;
+      margin-top: 5px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    .product-bottom {
+    .nav-links {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 24px;
     }
 
-    .product-price {
-      font-size: 18px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .product-price small {
-      color: var(--muted);
-      font-size: 10px;
+    .nav-links a {
+      color: #d2c5db;
+      font-size: 11px;
       font-weight: 700;
+      transition: color var(--transition);
     }
 
-    .product-buy {
+    .nav-links a:hover {
+      color: var(--purple-light);
+    }
+
+    .button {
       display: inline-flex;
+      min-height: 46px;
       align-items: center;
       justify-content: center;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--accent);
-      padding: 9px 12px;
+      gap: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background: var(--purple);
+      color: #190c23;
+      cursor: pointer;
       font-size: 11px;
       font-weight: 900;
-      transition: all 0.2s ease;
-    }
-
-    .product-buy:hover {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    .product-note {
-      margin-top: 25px;
-      color: var(--muted);
-      font-size: 12px;
+      letter-spacing: 1px;
       text-align: center;
+      text-transform: uppercase;
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
     }
 
-    @media (max-width: 950px) {
-      .nav-links {
-        gap: 15px;
-      }
-
-      .hero-grid {
-        gap: 30px;
-      }
-
-      .products {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .button:hover {
+      transform: translateY(-3px);
+      background: var(--purple-light);
+      box-shadow: 0 8px 28px rgba(189, 120, 255, 0.2);
     }
 
-    @media (max-width: 700px) {
-      .container {
-        width: min(100% - 28px, var(--max-width));
-      }
-
-      .nav {
-        min-height: 68px;
-      }
-
-      .logo {
-        font-size: 23px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 12px 20px 20px;
-        border-bottom: 1px solid var(--border);
-        background: var(--bg);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 13px 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-actions {
-        gap: 8px;
-      }
-
-      .hero {
-        padding: 70px 0;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        letter-spacing: -2.5px;
-      }
-
-      .hero-visual {
-        min-height: 300px;
-      }
-
-      section {
-        padding: 60px 0;
-      }
-
-      .section-heading {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .products {
-        gap: 12px;
-      }
-
-      .product-info {
-        padding: 13px;
-      }
-
-      .product-info h3 {
-        font-size: 14px;
-      }
-
-      .product-bottom {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .product-buy {
-        width: 100%;
-      }
+    .button-outline {
+      border-color: rgba(217, 179, 255, 0.45);
+      background: rgba(20, 10, 29, 0.55);
+      color: var(--white);
     }
-  </style>
-</head>
+
+    .button-outline:hover {
+      border-color: var(--purple);
+      background: rgba(189, 120, 255, 0.12);
+      color: var(--purple-light);
+    }
